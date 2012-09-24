@@ -1,0 +1,117 @@
+.users_enter_box {
+display:block;
+float:left;
+clear:both;
+width:400px;
+height:auto;
+margin:20px 0 0 0;
+padding:0 0 0 0;
+/*border:#cccccc solid 1px;*/
+}
+
+.users_enter_caption {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:medium;
+font-weight:normal;
+display:block;
+float:left;
+width:auto;
+height:auto;
+color:#872929;
+clear:both;
+margin:0 0 0 0;
+padding:0 0 10px 0;
+}
+
+.users_enter_body {
+display:block;
+float:left;
+clear:both;
+width:400px;
+height:auto;
+clear:both;
+padding:0 0 0 0;
+}
+
+.users_enter_link a:link{
+font-size:small;
+font-size:x-small;
+text-decoration:underline;
+outline:none;
+}
+
+.users_enter_link a:visited{
+font-size:x-small;
+color:#003366;
+text-decoration:underline;
+}
+
+.users_enter_link a:hover{
+font-size:x-small;
+color:#666666;
+text-decoration:underline;
+}
+
+.users_enter_link a{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:x-small;
+font-weight:normal;
+display:block;
+float:left;
+width:100px;
+color:#003366;
+margin:0 0 0 10px;
+text-decoration:underline;
+outline:none;
+}
+
+
+.users_enter_label {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:normal;
+display: block;
+float:left;
+width:70px;
+color:#000000;
+}
+
+.users_enter_string {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:normal;
+margin-left:10px;
+color:#333333;
+}
+
+input.users_enter_input {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:medium;
+font-weight:normal;
+width:200px;
+color:#000000;
+/*border:#666666 solid 1px;*/
+}
+
+input.users_enter_submit:hover {
+font-size:small;
+color:#ffffff;
+width:200px;
+border:#444444 solid 1px;
+text-decoration:none;
+background:#666666;
+}
+
+input.users_enter_submit {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:normal;
+color:#000000;
+width:200px;
+padding:5px 0 5px 0;
+margin:0 0 0 75px;
+border:#cccccc solid 1px;
+text-align:center;
+text-decoration:none;
+background:#dddddd;
+}

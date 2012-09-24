@@ -1,0 +1,44 @@
+.users_preEnter_box {
+display:block;
+float:left;
+clear:both;
+width:300px;
+height:auto;
+margin:0 0 0 20px;
+padding:0 0 0 0;
+/*border:#cccccc solid 1px;*/
+}
+
+.users_preEnter_box a:link{
+font-size:small;
+text-decoration:none;
+outline:none;
+}
+
+.users_preEnter_box a:visited{
+font-size:small;
+color:#003366;
+text-decoration:none;
+}
+
+.users_preEnter_box a:hover{
+font-size:small;
+color:#666666;
+text-decoration:none;
+}
+
+.users_preEnter_box a{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:normal;
+color:#003366;
+display:block;
+float:left;
+line-height:30px;
+padding:0 0 0 30px;
+margin:0 20px 0 0;
+text-decoration:none;
+outline:none;
+}
+
+

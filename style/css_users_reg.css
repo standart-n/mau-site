@@ -1,0 +1,127 @@
+.users_reg_box {
+display:block;
+float:left;
+clear:both;
+width:340px;
+height:auto;
+clear:both;
+margin:20px 0 0 0;
+padding:0 0 0 0;
+}
+
+.users_reg_caption {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:medium;
+font-weight:normal;
+display:block;
+float:left;
+width:auto;
+height:auto;
+color:#872929;
+clear:both;
+margin:0 0 0 0;
+padding:0 0 10px 0;
+}
+
+.users_reg_body {
+display:block;
+float:left;
+clear:both;
+width:340px;
+height:auto;
+clear:both;
+padding:0 0 0 0;
+}
+
+.users_reg_link a:link{
+font-size:x-small;
+text-decoration:underline;
+outline:none;
+}
+
+.users_reg_link a:visited{
+font-size:x-small;
+color:#003366;
+text-decoration:underline;
+}
+
+.users_reg_link a:hover{
+font-size:x-small;
+color:#666666;
+text-decoration:underline;
+}
+
+.users_reg_link a{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:x-small;
+font-weight:normal;
+color:#003366;
+margin:0 10px 0 10px;
+text-decoration:underline;
+outline:none;
+}
+
+
+.users_reg_label {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:normal;
+margin:0 0 0 0;
+color:#000000;
+}
+
+.users_reg_line {
+display:block;
+float:left;
+width:150px;
+height:auto;
+padding:0;
+margin:0;
+}
+
+.users_star {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:xx-small;
+font-weight:normal;
+color:#990000;
+}
+
+.users_reg_comment {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:normal;
+margin:0 0 0 10px;
+color:#333333;
+}
+
+input.users_reg_input {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:medium;
+font-weight:normal;
+width:200px;
+color:#000000;
+/*border:#666666 solid 1px;*/
+}
+
+input.users_reg_submit:hover {
+font-size:small;
+color:#ffffff;
+width:200px;
+border:#444444 solid 1px;
+text-decoration:none;
+background:#666666;
+cursor:pointer;
+}
+
+input.users_reg_submit {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:normal;
+color:#000000;
+width:200px;
+padding:5px 0 5px 0;
+border:#cccccc solid 1px;
+text-align:center;
+text-decoration:none;
+background:#dddddd;
+}

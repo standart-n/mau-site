@@ -1,0 +1,348 @@
+html, body { 
+display: block;
+float: left;
+width: 100%;
+height: 100%;
+margin: 0;
+padding: 0;
+/*background: #ffffff url(../img/mauric/dot_back.png) left top;*/
+}
+@font-face { 
+font-family: Optima;
+src: url(../fonts/OPTIMA.TIF);
+}
+#TopMain { 
+display: none;
+float: left;
+width: 100%;
+height: auto;
+margin: 0;
+padding: 0;
+clear: both;
+/*background: url(../img/mauric/footer_back.png) left top;*/
+}
+#Header { 
+display: block;
+float: left;
+width: 100%;
+height: auto;
+padding: 10px 0 0 0;
+margin: 0;
+clear: both;
+/*background: url(../img/mauric/footer_back.png) left top;*/
+}
+#Tools { 
+display: block;
+float: left;
+width: 100%;
+height: auto;
+padding: 15px 0 0 0;
+margin: 0;
+clear: both;
+/*background: url(../img/mauric/footer_back.png) left top;*/
+}
+#Buttons { 
+display: block;
+float: left;
+width: 100%;
+height: auto;
+padding: 2px 0 0 0;
+margin: 20px 0 0 0;
+clear: both;
+/*background: url(../img/mauric/footer_back.png) left top;*/
+}
+#Navigation { 
+display: block;
+float: left;
+width: 100%;
+height: auto;
+padding: 0 0 0 0;
+margin: 10px 0 0 0;
+clear: both;
+/*background: url(../img/mauric/shtrih.png) left top;*/
+}
+#ToolsSearch { 
+display: block;
+float: left;
+width: 450px;
+height: auto;
+margin: 0;
+padding: 0;
+}
+#Content { 
+display: block;
+float: left;
+width: 100%;
+height: auto;
+padding: 0 0 0 0;
+margin: 10px 0 0 0;
+clear: both;
+/*background: url(../img/mauric/mark_line.png) repeat-y left top;*/
+}
+#Footer { 
+display: block;
+float: left;
+width: 100%;
+height: auto;
+padding: 50px 0 10px 0;
+margin: 0;
+clear: both;
+/*background: url(../img/mauric/mark_end.png) no-repeat left top;*/
+}
+#ContentSide { 
+display: block;
+float: left;
+width: 300px;
+height: auto;
+margin: 0;
+padding: 40px 0 0 0;
+}
+#ContentPrimary { 
+display: block;
+float: left;
+width: 610px;
+height: auto;
+min-height:250px;
+margin: 0;
+padding: 0 20px 0 20px;
+/*background: url(../img/mauric/mark.png) no-repeat left top;*/
+}
+#Return { 
+display: block;
+float: left;
+width: 930px;
+height: auto;
+padding: 5px 0 0 20px;
+margin: 0;
+clear: both;
+}
+#idBlockMain { 
+position: absolute;
+display: block;
+float: left;
+width: 950px;
+height: auto;
+left: 50%;
+margin: 0 0 0 -475px;
+padding: 0 7px 0 7px;
+/*background: url(../img/mauric/line.png) repeat-y left top;*/
+}
+#TopButtons a:link { 
+font-size: xx-small;
+color: #003366;
+text-decoration: underline;
+outline: none;
+}
+#TopButtons a:visited { 
+font-size: xx-small;
+color: #003366;
+text-decoration: underline;
+}
+#TopButtons a:hover { 
+font-size: xx-small;
+color: #666666;
+text-decoration: underline;
+}
+#TopButtons a { 
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: xx-small;
+font-weight: normal;
+display: block;
+float: left;
+margin: 5px 10px 5px 10px;
+color: #003366;
+text-decoration: underline;
+outline: none;
+}
+#FooterContacts { 
+font-family: Verdana;
+font-size: 10px;
+font-weight: normal;
+display: block;
+float: left;
+width: 490px;
+height: auto;
+padding: 10px 0 0 10px;
+margin: 0;
+color: #666;
+border-top: #ddd solid 1px;
+}
+#FooterCopyright { 
+font-family: Verdana;
+font-size: 10px;
+font-weight: normal;
+display: block;
+float: left;
+width: 430px;
+height: auto;
+padding: 10px 20px 0 0;
+margin: 0;
+color: #aaa;
+border-top: #ddd solid 1px;
+}
+#Header h1 { 
+font-family: Optima,Verdana;
+font-size: 14px;
+font-weight:normal;
+padding: 0;
+margin: 0;
+color: #872929;
+text-decoration: none;
+}
+#Header h2 { 
+font-family: Optima, Verdana;
+font-size: 14px;
+font-weight:normal;
+padding: 0;
+margin: 0;
+color: #872929;
+text-decoration: none;
+}
+#icoState { 
+background: url(../img/mauric/ico_state.png) no-repeat top center;
+}
+#icoCity { 
+background: url(../img/mauric/ico_city.png) no-repeat top center;
+}
+#icoHome { 
+background: url(../img/mauric/ico_home.png) no-repeat top center;
+}
+#icoPhysic { 
+background: url(../img/mauric/ico_physic.png) no-repeat top center;
+}
+#icoBonus { 
+background: url(../img/mauric/ico_bonus.png) no-repeat top center;
+}
+#NavigationLine a:hover { 
+font-size: small;
+color: #666666;
+text-decoration: none;
+outline: none;
+}
+#NavigationLine a { 
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: small;
+font-weight: normal;
+color: #003366;
+display: block;
+float: left;
+width: 125px;
+height: auto;
+margin: 10px 0 10px 0;
+padding: 70px 0 0 0;
+text-decoration: none;
+text-align: center;
+outline: none;
+border: none;
+}
+.clCopyright a:hover { 
+color: #ff0000;
+}
+.clCopyright a { 
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 10px;
+font-weight: normal;
+color: #872929;
+text-decoration: none;
+outline: none;
+}
+a.btn:hover { 
+color: #ff0000;
+border-bottom:#ff0000 dashed 1px;
+}
+a.btn { 
+font-family: Optima,Verdana, Arial, Helvetica, sans-serif;
+font-size: 16px;
+font-weight: normal;
+color: #036;
+display: block;
+float:left;
+width:auto;
+height:auto;
+margin: 0 15px 0 15px;
+padding: 0;
+outline: none;
+text-decoration: none;
+text-align: center;
+border-bottom:#036 dashed 1px;
+/*background: url(../img/mauric/tab.png) no-repeat center bottom;*/
+}
+div.btn { 
+font-family: Optima, Verdana, Arial, Helvetica, sans-serif;
+font-size: 16px;
+font-weight: normal;
+color: #872929;
+display: block;
+float:left;
+width:auto;
+margin: 0 15px 0 15px;
+padding: 0;
+outline: none;
+text-decoration: none;
+text-align: center;
+/*background: url(../img/mauric/tab_act.png) no-repeat center bottom;*/
+}
+div.line { 
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: medium;
+font-weight: normal;
+color: #000000;
+display: block;
+float: left;
+width: 271px;
+height: 22px;
+margin: 0 0 0 0;
+padding: 0;
+outline: none;
+text-decoration: none;
+text-align: center;
+/*border-bottom: #872929 solid 2px;*/
+}
+#HeaderCaption { 
+display: block;
+float: left;
+width: 510px;
+height: auto;
+padding: 5px 10px 5px 10px;
+}
+#HeaderLogo img { 
+border: none;
+outline: none;
+}
+#ButtonsLine img { 
+display: block;
+float: left;
+height: 36px;
+margin: 0 0 0 0;
+padding: 0;
+outline: none;
+border: none;
+}
+
+a#mainlogo {
+display:block;
+float:left;
+width:200px;
+height:50px;
+padding:0;
+margin:0 0 0 10px;
+background:url(../../img/mauric/mauric_logo.png) no-repeat left top;  
+text-decoration:none;
+border:none;
+outline:none;
+}
+
+#FooterContactsLeft{
+display:block;
+float:left;
+width:240px;
+height:auto;
+}
+
+#FooterContactsRight{
+color:#ddd;
+display:block;
+float:right;
+width:240px;
+height:auto;
+}

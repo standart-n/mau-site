@@ -1,0 +1,48 @@
+.text_items_box {
+display:block;
+float:left;
+clear:both;
+width:500px;
+height:50px;
+margin:0 0 0 -40px;
+padding:0 0 0 40px;
+}
+
+.text_items_caption a:link{
+font-size:medium;
+color:#003366;
+text-decoration:underline;
+outline:none;
+}
+
+.text_items_caption a:visited{
+font-size:medium;
+color:#003366;
+text-decoration:underline;
+}
+
+.text_items_caption a:hover{
+font-size:medium;
+color:#666666;
+text-decoration:underline;
+}
+
+.text_items_caption a{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:medium;
+font-weight:normal;
+color:#003366;
+width:300px;
+text-decoration:underline;
+outline:none;
+}
+
+
+.text_items_description {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:x-small;
+font-weight:normal;
+margin:0 0 0 5px;
+color:#333333;
+}
+

@@ -1,0 +1,52 @@
+.users_reg_error_box {
+display:block;
+float:left;
+clear:both;
+width:600px;
+height:auto;
+clear:both;
+margin:5px 0 0 0;
+padding:0 0 0 20px;
+background:url(../img/error.png) no-repeat left top;
+}
+
+
+.users_reg_error_label {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:x-small;
+font-weight:normal;
+display:block;
+float:left;
+width:auto;
+height:auto;
+color:#999999;
+margin:0 5px 0 5px;
+padding:0 0 0 0;
+}
+
+.users_reg_error_type {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:normal;
+display:block;
+float:left;
+width:100px;
+height:auto;
+color:#000000;
+margin:0 0 0 0;
+padding:0 0 0 0;
+}
+
+.users_reg_error_comment {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:normal;
+display:block;
+float:left;
+width:240px;
+height:auto;
+color:#660000;
+margin:0 0 0 0;
+padding:0 0 0 0;
+}
+

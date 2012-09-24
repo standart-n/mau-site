@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Dement.ru | De.js Раздвижные блоки</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta http-equiv="Content-Language" content="ru" />
+<meta name="robots" content="all" />
+<meta name="Copyright" Lang="ru" content="2010 НВП Стандарт-Н">
+<meta name="Document-state" content="Dynamic">
+<meta name="Revesit" content="7">
+<meta name="Раздвижные блоки"/>
+<meta name="description" content="Раздвижные блоки" />
+<meta name="keywords" content="javascript, dement, de.js, раздвижные блоки, слайдеры" />
+
+<link	href="http://www.dement.ru/img/favico.ico" rel="shortcut icon" type="image/x-icon" />
+<link   href="style_main.css"  rel="stylesheet"   type="text/css">
+
+<script type="text/javascript" src="http://www.dement.ru/!lib/De.js"></script>
+
+																		 		
+	<script type="text/javascript">						
+	new deSliderBlock(		 
+	"box1",  /* родительский див */ 
+	"click", /* событие при котором блок скроется */  
+	"click", /* событие при котором блок раскроется */
+	"100",	 /* скорость появления */
+	"relative",	/* позиционирование блока */
+	"0px",	 /* left отступ от левого края */
+	"0px",	 /* top отступ сверху */
+    "<div id=\"Caption_off\">Информация</div>",	/* содержимое заголовка когда вкладка закрыта */
+	"<div id=\"Caption_on\">Информация</div>",	/* text2 ON текст заголовка когда она раскрыта */
+	"300px", /* ширина закладки */
+	"20px",	 /* height высота закладки */
+	"#9ccaea", /* задний фон при закрытой вкладке */
+	"#cdd8e0", /* задний фон при раскрытой вкладке */
+	"#799fba solid 2px", /* границы при закрытой вкладке */ 
+	"#acacac solid 2px", /* границы при раскрытой вкладке */
+	"Пример создания раздвижных блоков. "+
+    "Здесь может находиться любая информация или любой html-код", 
+    /* содержимое блока */ 
+	"302px",		 /* ширина этого блока */ 
+	"100px",		 /*  высота этого блока */
+ 	"#ffffff",		 /* background задний фон */ 
+	"#cccccc solid 1px", /* border окантовка */ 
+	"ON",	/* start начальное состояние закладки (открытое или закрытое) */ 
+	"9",	/* css Z_INDEX */		
+	"deSliderDiv_1"	 /* * */ /* id блока который будет создан */ 
+	);		/* * */ /* уникальные параметры */										
+	</script>			
+
+
+	<script type="text/javascript">						
+	new deSliderBlock(		 
+	"box2",  /* родительский див */ 
+	"click", /* событие при котором блок скроется */  
+	"click", /* событие при котором блок раскроется */
+	"100",	 /* скорость появления */
+	"relative",	/* позиционирование блока */
+	"0px",	 /* left отступ от левого края */
+	"0px",	 /* top отступ сверху */
+    "<div id=\"Caption_off\">Изображение (1)</div>",	/* содержимое заголовка когда вкладка закрыта */
+	"<div id=\"Caption_on\">Изображение</div>",	/* текст заголовка когда она раскрыта */
+	"300px", /* ширина закладки */
+	"20px",	 /* height высота закладки */
+	"#9ccaea", /* задний фон при закрытой вкладке */
+	"#cdd8e0", /* задний фон при раскрытой вкладке */
+	"#799fba solid 2px", /* границы при закрытой вкладке */ 
+	"#acacac solid 2px", /* границы при раскрытой вкладке */
+	"<img src=\"http://www.dement.ru/!lib/_img/strelka.jpg\">", /* содержимое блока */ 
+	"302px",		 /* ширина этого блока */ 
+	"100px",		 /*  высота этого блока */
+ 	"#ffffff",		 /* background задний фон */ 
+	"#cccccc solid 1px", /* border окантовка */ 
+	"OFF",	/* start начальное состояние закладки (открытое или закрытое) */ 
+	"9",	/* css Z_INDEX */		
+	"deSliderDiv_2"	 /* * */ /* id блока который будет создан */ 
+	);		/* * */ /* уникальные параметры */										
+	</script>			
+
+
+</head>
+<body>
+
+	<div id="idMainDiv">
+	<div id="box1"></div>
+	<div id="middle"></div>
+	<div id="box2"></div>
+	</div>
+
+</body>
+</html>
+
+

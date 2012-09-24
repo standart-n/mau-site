@@ -1,0 +1,54 @@
+	/* главные стили */
+	html, body {
+	padding:0;
+	margin:0;
+	width:100%;
+	height:100%;
+	background:#ffffff url(http://www.dement.ru/!lib/_img/backgr3.png) left top;
+	}
+
+	#imgStatic1{
+	display:block;
+	float:left;
+	border:#666666 solid 1px;
+	}
+
+	#imgStatic2{
+	display:block;
+	float:left;
+	clear:both;
+	border:#666666 solid 1px;
+	}
+
+	#imgStatic3{
+	display:block;
+	float:left;
+	clear:both;
+	border:#666666 solid 1px;
+	}
+
+	#idMainDiv {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color:#333333;
+	position:absolute;
+	display:block;
+	float:left;
+	left:50%;
+	top:100px;
+	width:800px;
+	margin-left:-400px;
+	height:404px;
+	text-align:center;
+	border:#333333 solid 10px;
+	background:#ffffff;
+	}		
+	
+		
+	
+
+
+
+
+
+

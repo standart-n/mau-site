@@ -1,0 +1,67 @@
+.text_products_box {
+display:block;
+float:left;
+clear:both;
+margin:10px 0 0 0;
+padding:0 0 10px 0;
+border-bottom:#cccccc dashed 1px;
+}
+
+
+.text_products_caption {
+display:block;
+height:auto;
+width:300px;
+float:left;
+padding:0;
+margin:0;
+text-align:left;
+}
+
+.text_products_caption a:link{
+font-size:small;
+color:#872929;
+text-decoration:underline;
+outline:none;
+}
+
+.text_products_caption a:visited{
+font-size:small;
+color:#872929;
+text-decoration:underline;
+}
+
+.text_products_caption a:hover{
+font-size:small;
+color:#666666;
+text-decoration:underline;
+}
+
+.text_products_caption a{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:normal;
+color:#872929;
+width:300px;
+text-decoration:underline;
+outline:none;
+}
+
+
+.text_products_description h3 {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:x-small;
+font-weight:normal;
+display:block;
+float:left;
+height:auto;
+width:550px;
+clear:both;
+color:#000000;
+padding:0 0 0 0;
+margin:5px 0 0 0;
+}
+
+.text_products_keywords {
+display:none;
+}

@@ -1,0 +1,50 @@
+.text_simple_box {
+display:block;
+float:left;
+clear:both;
+margin:20px 0 0 0;
+padding:0 0 10px 0;
+border-bottom:#cccccc dashed 1px;
+}
+
+
+.text_simple_caption {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:medium;
+font-weight:normal;
+color:#003366;
+display:block;
+height:auto;
+width:300px;
+float:left;
+padding:0;
+margin:0;
+text-align:left;
+text-decoration:none;
+}
+
+.text_simple_date {
+font-family:Arial,Verdana,Times New Roman;
+font-size:small;
+color:#666666;
+display:block;
+float:left;
+width:150px;
+height:auto;
+padding:2px 0 0 0;
+margin:0 0 0 5px;
+}
+
+.text_simple_description {
+font-family:Sans-Serif,Verdana,Times New Roman;
+font-size:small;
+font-weight:normal;
+display:block;
+float:left;
+height:auto;
+width:550px;
+clear:both;
+color:#000000;
+padding:0 0 0 0;
+margin:5px 0 0 0;
+}

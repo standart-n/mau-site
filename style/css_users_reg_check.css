@@ -1,0 +1,26 @@
+.users_reg_check_box {
+display:block;
+float:left;
+clear:both;
+width:600px;
+height:auto;
+clear:both;
+margin:0 0 0 0;
+padding:0 0 30px 0;
+}
+
+
+.users_reg_check_caption {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:medium;
+font-weight:normal;
+display:block;
+float:left;
+width:auto;
+height:auto;
+clear:both;
+color:#872929;
+margin:0 0 0 0;
+padding:0 0 10px 0;
+}
+

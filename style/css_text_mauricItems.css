@@ -1,0 +1,55 @@
+.text_mauricItems_box {
+display:block;
+float:left;
+clear:both;
+width:500px;
+height:auto;
+margin:0 0 0 0;
+padding:0 0 10px 0;
+}
+
+.text_mauricItems_caption a:link{
+font-size:medium;
+color:#003366;
+text-decoration:underline;
+outline:none;
+}
+
+.text_mauricItems_caption a:visited{
+font-size:medium;
+color:#003366;
+text-decoration:underline;
+}
+
+.text_mauricItems_caption a:hover{
+font-size:medium;
+color:#666666;
+text-decoration:underline;
+}
+
+.text_mauricItems_caption a{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:medium;
+font-weight:normal;
+color:#003366;
+display:block;
+float:left;
+width:490px;
+height:auto;
+text-decoration:underline;
+outline:none;
+}
+
+
+.text_mauricItems_description {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:normal;
+display:block;
+float:left;
+width:490px;
+height:auto;
+margin:3px 0 0 0;
+color:#111111;
+}
+

@@ -1,0 +1,69 @@
+.users_reg_activation_box {
+display:block;
+float:left;
+clear:both;
+width:500px;
+height:auto;
+margin:5px 0 0 0;
+padding:0 0 0 0;
+clear:both;
+}
+
+.users_reg_activation_box a:link{
+font-size:small;
+color:#003366;
+text-decoration:underline;
+outline:none;
+}
+
+.users_reg_activation_box a:visited{
+font-size:small;
+color:#003366;
+text-decoration:underline;
+}
+
+.users_reg_activation_box a:hover{
+font-size:small;
+color:#994400;
+text-decoration:underline;
+}
+
+.users_reg_activation_box a{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:normal;
+color:#003366;
+margin:0;
+padding:0;
+text-decoration:underline;
+outline:none;
+}
+
+.users_reg_activation_caption {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:medium;
+font-weight:normal;
+display:block;
+float:left;
+width:500px;
+height:auto;
+clear:both;
+color:#872929;
+margin:0 0 0 0;
+padding:0 0 10px 0;
+}
+
+.users_reg_activation_comment {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:normal;
+display:block;
+float:left;
+width:500px;
+height:auto;
+clear:both;
+color:#000000;
+margin:0 0 0 0;
+padding:0 0 0 0;
+}
+

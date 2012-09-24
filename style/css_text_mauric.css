@@ -1,0 +1,87 @@
+.text_mauric_box {
+display:block;
+float:left;
+clear:both;
+margin:10px 0 0 0;
+padding:0 0 10px 0;
+}
+
+
+.text_mauric_caption h2{
+font-family:Optima, Verdana, Arial, Helvetica, sans-serif;
+font-size:x-large;
+font-weight:normal;
+/*color:#ffffff;*/
+color:#872929;
+display:block;
+width:610px;
+/*line-height:25px;*/
+float:left;
+padding:0 0 0 0;
+margin:0;
+text-align:left;
+}
+
+.text_mauric_text {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:normal;
+display:block;
+float:left;
+height:auto;
+clear:both;
+color:#000000;
+padding:0 0 0 0;
+margin:5px 0 0 0;
+}
+
+.text_mauric_keywords {
+display:none;
+}
+
+.text_mauric_text a:link{
+font-family:Verdana,Arial,Sans_serif;
+font-size:medium;
+color:#006699;
+outline:none;
+border:none;
+text-decoration:underline;
+}
+
+.text_mauric_text a:visited{
+font-family:Verdana,Arial,Sans_serif;
+font-size:medium;
+color:#006699;
+outline:none;
+border:none;
+text-decoration:underline;
+}
+
+.text_mauric_text a:hover{
+font-family:Verdana,Arial,Sans_serif;
+font-size:medium;
+color:#990000;
+outline:none;
+border:none;
+text-decoration:underline;
+}
+
+.text_mauric_text a{
+font-family:Verdana,Arial,Sans_serif;
+font-size:medium;
+color:#006699;
+outline:none;
+border:none;
+text-decoration:underline;
+}
+
+.text_mauric_text div {
+padding:0;
+marign:0;
+}
+
+.text_mauric_text p {
+padding:0;
+marign:0;
+}
+
