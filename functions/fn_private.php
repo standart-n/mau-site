@@ -23,11 +23,11 @@ function getRow($line) { $mas=explode("|",$line);
 
 function getServiceName(&$name) {
     switch ($name){
-		case "хвод": $name="Холодная вода"; break;
-		case "гвод": $name="Горячая вода"; break;
-		case "элек": $name="Электроэнергия"; break;
-		case "отоп": $name="Теплоэнергия"; break;
-		case "пгаз": $name="Газоснабжение"; break;
+		case "С…РІРѕРґ": $name="РҐРѕР»РѕРґРЅР°СЏ РІРѕРґР°"; break;
+		case "РіРІРѕРґ": $name="Р“РѕСЂСЏС‡Р°СЏ РІРѕРґР°"; break;
+		case "СЌР»РµРє": $name="Р­Р»РµРєС‚СЂРѕСЌРЅРµСЂРіРёСЏ"; break;
+		case "РѕС‚РѕРї": $name="РўРµРїР»РѕСЌРЅРµСЂРіРёСЏ"; break;
+		case "РїРіР°Р·": $name="Р“Р°Р·РѕСЃРЅР°Р±Р¶РµРЅРёРµ"; break;
     }	return $name;
 }
 
@@ -52,8 +52,8 @@ function getDialogCode($ms) {
     $show="";
     $show.="<table cellpadding=\"2\" cellspacing=\"0\" border=\"0\">";
     $show.=$this->getDialogLine("ID",$ms['id']);
-    $show.=$this->getDialogLine("Услуга",$this->getServiceName($ms['serv']));
-    $show.=$this->getDialogLine("Номер",$ms['serial']);
+    $show.=$this->getDialogLine("РЈСЃР»СѓРіР°",$this->getServiceName($ms['serv']));
+    $show.=$this->getDialogLine("РќРѕРјРµСЂ",$ms['serial']);
     $show.=$this->showDialogNewValue($ms['id']);
     $show.="</table>";
     return $show;
@@ -108,13 +108,13 @@ function getNewValue($id,$value) {
         	    $res=mysql_query($sql,$this->db);
                 if (isset($res)) {
                     if ($res) {
-                     $notice="Значение обновлено!";
+                     $notice="Р—РЅР°С‡РµРЅРёРµ РѕР±РЅРѕРІР»РµРЅРѕ!";
                      $query="TRUE";                                                
-                    } else { $notice="Запрос не выполнен"; }
-                } else { $notice="Запрос не выполнен"; }
-            }  else { $notice="Возникли проблемы с подключением к базе данных"; }
-        } else { $notice="Новое значение не может быть меньше старого"; }
-    } else { $notice="Новое значение должно быть больше нуля"; }
+                    } else { $notice="Р—Р°РїСЂРѕСЃ РЅРµ РІС‹РїРѕР»РЅРµРЅ"; }
+                } else { $notice="Р—Р°РїСЂРѕСЃ РЅРµ РІС‹РїРѕР»РЅРµРЅ"; }
+            }  else { $notice="Р’РѕР·РЅРёРєР»Рё РїСЂРѕР±Р»РµРјС‹ СЃ РїРѕРґРєР»СЋС‡РµРЅРёРµРј Рє Р±Р°Р·Рµ РґР°РЅРЅС‹С…"; }
+        } else { $notice="РќРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ СЃС‚Р°СЂРѕРіРѕ"; }
+    } else { $notice="РќРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РЅСѓР»СЏ"; }
     $ms['notice']="<div class=\"private_dlg_notice\">".$notice."</div>";
     $ms['query']=$query;
     return $ms;
@@ -125,12 +125,12 @@ function showDialogNewValue($id) {
     $show="";
     $show.="<tr height=\"10px\"><td></td></tr>";
     $show.="<tr><td colspan=\"2\">";
-    $show.="Введите новое значение:";
+    $show.="Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ:";
     $show.="</td></tr>";
     $show.="<tr><td colspan=\"2\">";
     $show.="<input id=\"private_dlg_value\" type=\"text\" value=\"".$last."\">";
     $show.="<input id=\"private_dlg_id\" type=\"hidden\" value=\"".$id."\">";
-    $show.="<span class=\"private_link\"><a id=\"private_ins_newValue\" href=\"#de\">сохранить</a></span>";
+    $show.="<span class=\"private_link\"><a id=\"private_ins_newValue\" href=\"#de\">СЃРѕС…СЂР°РЅРёС‚СЊ</a></span>";
     $show.="</td></tr>";
     return  $show;    
 }
@@ -150,10 +150,11 @@ function getDate(&$date) {
 function getAdress($ms) {
     $adress="";
     if (((isset($ms['street'])) && (($ms['street'])!="")))  { $adress.=$ms['street'];  }
-    if (((isset($ms['house'])) && (($ms['house'])!="")))    { $adress.=", д.".$ms['house'];  }
-    if (((isset($ms['building'])) && (($ms['building'])!=""))) { $adress.=", к.".$ms['building'];  }
-    if (((isset($ms['flat'])) && (($ms['flat'])!="")))     { $adress.=", кв.".$ms['flat'];  }
+    if (((isset($ms['house'])) && (($ms['house'])!="")))    { $adress.=", Рґ.".$ms['house'];  }
+    if (((isset($ms['building'])) && (($ms['building'])!=""))) { $adress.=", Рє.".$ms['building'];  }
+    if (((isset($ms['flat'])) && (($ms['flat'])!="")))     { $adress.=", РєРІ.".$ms['flat'];  }
     return $adress;
 }
 
 } ?>
+

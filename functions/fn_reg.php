@@ -18,110 +18,110 @@ var $table;
 function check_email($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="e-mail àäğåñ";
+    $ms['field']="e-mail Ğ°Ğ´Ñ€ĞµÑ";
     if ($line!="") {
       if (strlen($line)>3) {
        if (preg_match("/[0-9a-z_]+@[0-9a-z_^\.]+\.[a-z]{2,3}/i", $line)) {
           if ($this->emailExists($line)=="FALSE") {
                 $ms['check']="TRUE";
-          } else { $ms['error']="ïîëüçîâàòåëü ñ äàííûì e-mail àäğåñîì óæå çàğåãèñòğèğîâàí"; }
-       }  else { $ms['error']="íå ÿâëÿåòñÿ e-mail àäğåñîì"; }
-      } else { $ms['error']="ñëèøêîì êîğîòêîå çíà÷åíèå"; }
-    } else { $ms['error']="çíà÷åíèå íå óêàçàíî"; }
+          } else { $ms['error']="Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»ÑŒ Ñ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğ¼ e-mail Ğ°Ğ´Ñ€ĞµÑĞ¾Ğ¼ ÑƒĞ¶Ğµ Ğ·Ğ°Ñ€ĞµĞ³Ğ¸ÑÑ‚Ñ€Ğ¸Ñ€Ğ¾Ğ²Ğ°Ğ½"; }
+       }  else { $ms['error']="Ğ½Ğµ ÑĞ²Ğ»ÑĞµÑ‚ÑÑ e-mail Ğ°Ğ´Ñ€ĞµÑĞ¾Ğ¼"; }
+      } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ ĞºĞ¾Ñ€Ğ¾Ñ‚ĞºĞ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
+    } else { $ms['error']="Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ğ½Ğµ ÑƒĞºĞ°Ğ·Ğ°Ğ½Ğ¾"; }
     return $ms;
 }
 
 function check_account($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="ëèöåâîé ñ÷åò";
+    $ms['field']="Ğ»Ğ¸Ñ†ĞµĞ²Ğ¾Ğ¹ ÑÑ‡ĞµÑ‚";
     if ($line!="") {
       if (intval($line)>0) {
         if (($line>1000) && ($line<100000000000)) {
           if ($this->accountExists($line)=="FALSE") {
               if ($this->accountTrueExists($line)=="TRUE") {
                 $ms['check']="TRUE";
-              } else { $ms['error']="èíôîğìàöèè î äàííîì ëèöåâîì ñ÷åòå íåò â áàçå äàííûõ"; }
-          } else { $ms['error']="ïîëüçîâàòåëü ñ äàííûì ëèö. ñ÷åòîì óæå çàğåãèñòğèğîâàí"; }
-        }  else { $ms['error']="êîëè÷åñòâî çíàêîâ íå ñîîòâåòñòâóåò ëèö. ñ÷åòó"; }
-      } else { $ms['error']="íå ÿâëÿåòñÿ ÷èñëîì"; }
-    } else { $ms['error']="çíà÷åíèå íå óêàçàíî"; }
+              } else { $ms['error']="Ğ¸Ğ½Ñ„Ğ¾Ñ€Ğ¼Ğ°Ñ†Ğ¸Ğ¸ Ğ¾ Ğ´Ğ°Ğ½Ğ½Ğ¾Ğ¼ Ğ»Ğ¸Ñ†ĞµĞ²Ğ¾Ğ¼ ÑÑ‡ĞµÑ‚Ğµ Ğ½ĞµÑ‚ Ğ² Ğ±Ğ°Ğ·Ğµ Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ…"; }
+          } else { $ms['error']="Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»ÑŒ Ñ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğ¼ Ğ»Ğ¸Ñ†. ÑÑ‡ĞµÑ‚Ğ¾Ğ¼ ÑƒĞ¶Ğµ Ğ·Ğ°Ñ€ĞµĞ³Ğ¸ÑÑ‚Ñ€Ğ¸Ñ€Ğ¾Ğ²Ğ°Ğ½"; }
+        }  else { $ms['error']="ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ·Ğ½Ğ°ĞºĞ¾Ğ² Ğ½Ğµ ÑĞ¾Ğ¾Ñ‚Ğ²ĞµÑ‚ÑÑ‚Ğ²ÑƒĞµÑ‚ Ğ»Ğ¸Ñ†. ÑÑ‡ĞµÑ‚Ñƒ"; }
+      } else { $ms['error']="Ğ½Ğµ ÑĞ²Ğ»ÑĞµÑ‚ÑÑ Ñ‡Ğ¸ÑĞ»Ğ¾Ğ¼"; }
+    } else { $ms['error']="Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ğ½Ğµ ÑƒĞºĞ°Ğ·Ğ°Ğ½Ğ¾"; }
     return $ms;
 }
 
 function check_password($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="ïàğîëü";
+    $ms['field']="Ğ¿Ğ°Ñ€Ğ¾Ğ»ÑŒ";
     if ($line!="") {
       if (strlen($line)>1) {
         if (strlen($line)<50) {
                 $ms['check']="TRUE";
-        } else { $ms['error']="ñëèøêîì äëèííîå çíà÷åíèå"; }
-     } else { $ms['error']="ñëèøêîì êîğîòêîå çíà÷åíèå"; }
-    } else { $ms['error']="çíà÷åíèå íå óêàçàíî"; }
+        } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ Ğ´Ğ»Ğ¸Ğ½Ğ½Ğ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
+     } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ ĞºĞ¾Ñ€Ğ¾Ñ‚ĞºĞ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
+    } else { $ms['error']="Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ğ½Ğµ ÑƒĞºĞ°Ğ·Ğ°Ğ½Ğ¾"; }
     return $ms;
 }
 
 function check_confirm($psw1,$psw2){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="ïàğîëü";
+    $ms['field']="Ğ¿Ğ°Ñ€Ğ¾Ğ»ÑŒ";
       if ($psw1==$psw2) {
                $ms['check']="TRUE";
-       } else { $ms['error']="ïàğîëè íå ñîâïàäàşò"; }
+       } else { $ms['error']="Ğ¿Ğ°Ñ€Ğ¾Ğ»Ğ¸ Ğ½Ğµ ÑĞ¾Ğ²Ğ¿Ğ°Ğ´Ğ°ÑÑ‚"; }
     return $ms;
 }
 
 function check_street($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="óëèöà";
+    $ms['field']="ÑƒĞ»Ğ¸Ñ†Ğ°";
     if ($line!="") {
       if (strlen($line)>1) {
         if (strlen($line)<50) {
                 $ms['check']="TRUE";
-        } else { $ms['error']="ñëèøêîì äëèííîå çíà÷åíèå"; }
-     } else { $ms['error']="ñëèøêîì êîğîòêîå çíà÷åíèå"; }
-    } else { $ms['error']="çíà÷åíèå íå óêàçàíî"; }
+        } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ Ğ´Ğ»Ğ¸Ğ½Ğ½Ğ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
+     } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ ĞºĞ¾Ñ€Ğ¾Ñ‚ĞºĞ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
+    } else { $ms['error']="Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ğ½Ğµ ÑƒĞºĞ°Ğ·Ğ°Ğ½Ğ¾"; }
     return $ms;
 }
 
 function check_house($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="äîì";
+    $ms['field']="Ğ´Ğ¾Ğ¼";
     if ($line!="") {
       if (strlen($line)>0) {
         if (strlen($line)<50) {
                 $ms['check']="TRUE";
-        } else { $ms['error']="ñëèøêîì äëèííîå çíà÷åíèå"; }
-      } else { $ms['error']="ñëèøêîì êîğîòêîå çíà÷åíèå"; }
-    } else { $ms['error']="çíà÷åíèå íå óêàçàíî"; }
+        } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ Ğ´Ğ»Ğ¸Ğ½Ğ½Ğ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
+      } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ ĞºĞ¾Ñ€Ğ¾Ñ‚ĞºĞ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
+    } else { $ms['error']="Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ğ½Ğµ ÑƒĞºĞ°Ğ·Ğ°Ğ½Ğ¾"; }
     return $ms;
 }
 
 function check_building($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="êîğïóñ";
+    $ms['field']="ĞºĞ¾Ñ€Ğ¿ÑƒÑ";
     if (strlen($line)<50) {
         $ms['check']="TRUE";
-    } else { $ms['error']="ñëèøêîì äëèííîå çíà÷åíèå"; }
+    } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ Ğ´Ğ»Ğ¸Ğ½Ğ½Ğ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
     return $ms;
 }
 
 function check_flat($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="êâàğòèğà";
+    $ms['field']="ĞºĞ²Ğ°Ñ€Ñ‚Ğ¸Ñ€Ğ°";
     if ($line!="") {
       if (strlen($line)>0) {
         if (strlen($line)<50) {
                 $ms['check']="TRUE";
-        } else { $ms['error']="ñëèøêîì äëèííîå çíà÷åíèå"; }
-      } else { $ms['error']="ñëèøêîì êîğîòêîå çíà÷åíèå"; }
-    } else { $ms['error']="çíà÷åíèå íå óêàçàíî"; }
+        } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ Ğ´Ğ»Ğ¸Ğ½Ğ½Ğ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
+      } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ ĞºĞ¾Ñ€Ğ¾Ñ‚ĞºĞ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
+    } else { $ms['error']="Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ğ½Ğµ ÑƒĞºĞ°Ğ·Ğ°Ğ½Ğ¾"; }
     return $ms;
 }
 
@@ -242,3 +242,4 @@ function getNoticeStyle($action) {
 }
 
 } ?>
+
