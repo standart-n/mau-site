@@ -39,6 +39,7 @@ function getBaseFromAdmin() {
    	$this->settings_path="../settings/config.ini";
    	if (file_exists($this->settings_path)) { 
     	$this->db=$this->connect();
+    	$this->fdb=$this->fconnect();
     	$this->prefix=$this->prefix;
     } else {
         die("Не найден файл настроек подключения к базе данных");
@@ -102,7 +103,7 @@ function fdbSelect() {
 	// функция для работы с sql запросами
 
 	$ms=array();
-	$this->res=ibase_query($this->sql,$this->it);
+	$this->res=ibase_query($this->it,$this->sql);
 	$ms['res']=$this->res;
 	return $ms;
 

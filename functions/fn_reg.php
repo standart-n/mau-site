@@ -18,110 +18,110 @@ var $table;
 function check_email($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="e-mail Р°РґСЂРµСЃ";
+    $ms['field']="e-mail адрес";
     if ($line!="") {
       if (strlen($line)>3) {
        if (preg_match("/[0-9a-z_]+@[0-9a-z_^\.]+\.[a-z]{2,3}/i", $line)) {
           if ($this->emailExists($line)=="FALSE") {
                 $ms['check']="TRUE";
-          } else { $ms['error']="РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ РґР°РЅРЅС‹Рј e-mail Р°РґСЂРµСЃРѕРј СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ"; }
-       }  else { $ms['error']="РЅРµ СЏРІР»СЏРµС‚СЃСЏ e-mail Р°РґСЂРµСЃРѕРј"; }
-      } else { $ms['error']="СЃР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРѕРµ Р·РЅР°С‡РµРЅРёРµ"; }
-    } else { $ms['error']="Р·РЅР°С‡РµРЅРёРµ РЅРµ СѓРєР°Р·Р°РЅРѕ"; }
+          } else { $ms['error']="пользователь с данным e-mail адресом уже зарегистрирован"; }
+       }  else { $ms['error']="не является e-mail адресом"; }
+      } else { $ms['error']="слишком короткое значение"; }
+    } else { $ms['error']="значение не указано"; }
     return $ms;
 }
 
 function check_account($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="Р»РёС†РµРІРѕР№ СЃС‡РµС‚";
+    $ms['field']="лицевой счет";
     if ($line!="") {
       if (intval($line)>0) {
         if (($line>1000) && ($line<100000000000)) {
           if ($this->accountExists($line)=="FALSE") {
               if ($this->accountTrueExists($line)=="TRUE") {
                 $ms['check']="TRUE";
-              } else { $ms['error']="РёРЅС„РѕСЂРјР°С†РёРё Рѕ РґР°РЅРЅРѕРј Р»РёС†РµРІРѕРј СЃС‡РµС‚Рµ РЅРµС‚ РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С…"; }
-          } else { $ms['error']="РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ РґР°РЅРЅС‹Рј Р»РёС†. СЃС‡РµС‚РѕРј СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ"; }
-        }  else { $ms['error']="РєРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°РєРѕРІ РЅРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ Р»РёС†. СЃС‡РµС‚Сѓ"; }
-      } else { $ms['error']="РЅРµ СЏРІР»СЏРµС‚СЃСЏ С‡РёСЃР»РѕРј"; }
-    } else { $ms['error']="Р·РЅР°С‡РµРЅРёРµ РЅРµ СѓРєР°Р·Р°РЅРѕ"; }
+              } else { $ms['error']="информации о данном лицевом счете нет в базе данных"; }
+          } else { $ms['error']="пользователь с данным лиц. счетом уже зарегистрирован"; }
+        }  else { $ms['error']="количество знаков не соответствует лиц. счету"; }
+      } else { $ms['error']="не является числом"; }
+    } else { $ms['error']="значение не указано"; }
     return $ms;
 }
 
 function check_password($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="РїР°СЂРѕР»СЊ";
+    $ms['field']="пароль";
     if ($line!="") {
       if (strlen($line)>1) {
         if (strlen($line)<50) {
                 $ms['check']="TRUE";
-        } else { $ms['error']="СЃР»РёС€РєРѕРј РґР»РёРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ"; }
-     } else { $ms['error']="СЃР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРѕРµ Р·РЅР°С‡РµРЅРёРµ"; }
-    } else { $ms['error']="Р·РЅР°С‡РµРЅРёРµ РЅРµ СѓРєР°Р·Р°РЅРѕ"; }
+        } else { $ms['error']="слишком длинное значение"; }
+     } else { $ms['error']="слишком короткое значение"; }
+    } else { $ms['error']="значение не указано"; }
     return $ms;
 }
 
 function check_confirm($psw1,$psw2){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="РїР°СЂРѕР»СЊ";
+    $ms['field']="пароль";
       if ($psw1==$psw2) {
                $ms['check']="TRUE";
-       } else { $ms['error']="РїР°СЂРѕР»Рё РЅРµ СЃРѕРІРїР°РґР°СЋС‚"; }
+       } else { $ms['error']="пароли не совпадают"; }
     return $ms;
 }
 
 function check_street($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="СѓР»РёС†Р°";
+    $ms['field']="улица";
     if ($line!="") {
       if (strlen($line)>1) {
         if (strlen($line)<50) {
                 $ms['check']="TRUE";
-        } else { $ms['error']="СЃР»РёС€РєРѕРј РґР»РёРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ"; }
-     } else { $ms['error']="СЃР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРѕРµ Р·РЅР°С‡РµРЅРёРµ"; }
-    } else { $ms['error']="Р·РЅР°С‡РµРЅРёРµ РЅРµ СѓРєР°Р·Р°РЅРѕ"; }
+        } else { $ms['error']="слишком длинное значение"; }
+     } else { $ms['error']="слишком короткое значение"; }
+    } else { $ms['error']="значение не указано"; }
     return $ms;
 }
 
 function check_house($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="РґРѕРј";
+    $ms['field']="дом";
     if ($line!="") {
       if (strlen($line)>0) {
         if (strlen($line)<50) {
                 $ms['check']="TRUE";
-        } else { $ms['error']="СЃР»РёС€РєРѕРј РґР»РёРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ"; }
-      } else { $ms['error']="СЃР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРѕРµ Р·РЅР°С‡РµРЅРёРµ"; }
-    } else { $ms['error']="Р·РЅР°С‡РµРЅРёРµ РЅРµ СѓРєР°Р·Р°РЅРѕ"; }
+        } else { $ms['error']="слишком длинное значение"; }
+      } else { $ms['error']="слишком короткое значение"; }
+    } else { $ms['error']="значение не указано"; }
     return $ms;
 }
 
 function check_building($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="РєРѕСЂРїСѓСЃ";
+    $ms['field']="корпус";
     if (strlen($line)<50) {
         $ms['check']="TRUE";
-    } else { $ms['error']="СЃР»РёС€РєРѕРј РґР»РёРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ"; }
+    } else { $ms['error']="слишком длинное значение"; }
     return $ms;
 }
 
 function check_flat($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="РєРІР°СЂС‚РёСЂР°";
+    $ms['field']="квартира";
     if ($line!="") {
       if (strlen($line)>0) {
         if (strlen($line)<50) {
                 $ms['check']="TRUE";
-        } else { $ms['error']="СЃР»РёС€РєРѕРј РґР»РёРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ"; }
-      } else { $ms['error']="СЃР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРѕРµ Р·РЅР°С‡РµРЅРёРµ"; }
-    } else { $ms['error']="Р·РЅР°С‡РµРЅРёРµ РЅРµ СѓРєР°Р·Р°РЅРѕ"; }
+        } else { $ms['error']="слишком длинное значение"; }
+      } else { $ms['error']="слишком короткое значение"; }
+    } else { $ms['error']="значение не указано"; }
     return $ms;
 }
 
@@ -144,20 +144,25 @@ function getRow($line) {	$mas=explode("|",$line);
 		$this->ms[$key]=$this->line_row[$key]; 	}	else { $this->ms[$key]="";	}	}
 }
 
-function getUserByAccount($occ) {
+function getUserByAccount($occ) { $s="";
     $ms=array();
    	if ((isset($this->fdb)) && (isset($this->it))) {
 		$this->base->fdb=$this->fdb;
-		$this->base->it=$this->it;
-		$this->base->db=$this->db;
-        $this->base->sql="SELECT * FROM `mauric_base_profiles` WHERE (`OCC`=".$occ.")";
-    	$line_ms=$this->base->sqlSelect();
+		$this->base->it=$this->it;        
+        $s.="SELECT ";
+		$s.="ac.caption as OCC, ac.apartment as NOM_KVR, ";
+		$s.="bu.street as STREET, bu.nomer as NOM_DOM ";
+		$s.="FROM ACCOUNTS ac ";
+		$s.="LEFT JOIN buildings bu on (bu.d\$uuid=ac.building_d\$uuid) ";
+		$s.="WHERE (CAPTION='".$occ."') ";
+		$this->base->sql=$s;        
+    	$line_ms=$this->base->fdbSelect();
 		if (isset($line_ms)) {	if (isset($line_ms['res']))	{	if ($line_ms['res']) {
-			$line_row=ibase_fetch_row($line_ms['res']);
-			if (isset($line_row['occ']))      { $ms['occ']=$line_row['occ'];                  }
-			if (isset($line_row['street']))   { $ms['street']=$line_row['street'];            }
-			if (isset($line_row['nom_dom']))  { $ms['nom_dom']=$line_row['nom_dom'];          }
-			if (isset($line_row['nom_kvr']))  { $ms['nom_kvr']=$line_row['nom_kvr'];          }
+			$row=ibase_fetch_object($line_ms['res']);
+			if (isset($row->OCC))      { $ms['occ']=$row->OCC;                  }
+			if (isset($row->STREET))   { $ms['street']=$row->STREET;            }
+			if (isset($row->NOM_DOM))  { $ms['nom_dom']=$row->NOM_DOM;          }
+			if (isset($row->NOM_KVR))  { $ms['nom_kvr']=$row->NOM_KVR;          }
 		}	}	}
     }	return $ms;
 }
@@ -177,19 +182,23 @@ function accountExists($line) {
 }
 
 function accountTrueExists($line) {
+	$line=trim($line);
     $show="FALSE";
    	if ((isset($this->fdb)) && (isset($this->it))) {
 		$this->base->it=$this->it;
 		$this->base->fdb=$this->fdb;
-        $this->base->sql="SELECT * FROM ACCOUNTS WHERE (CAPTION='".$line."')";
+        $this->base->sql="SELECT * FROM ACCOUNTS WHERE (CAPTION='".$line."') AND (STATUS=0)";
     	$line_ms=$this->base->fdbSelect();
 		if (isset($line_ms)) {	if (isset($line_ms['res']))	{	if ($line_ms['res']) {
-			while($line_row=ibase_fetch_row($line_ms['res'])) {
-				$account=$line_row['CAPTION'];
-				if ($account==$line) { $show="TRUE"; }
+			while($row=ibase_fetch_object($line_ms['res'])) {
+				$account=$row->CAPTION;
+				if ($account==$line) { 
+					$show="TRUE"; 
+				}
 			}
 		}	}	}
-    }	return $show;
+    }	
+    return $show;
 }
 
 function emailExists($line) {

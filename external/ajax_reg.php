@@ -16,10 +16,14 @@
 
 	$base->getBaseFromAdmin();
 	$db=				$base->db;
+	$fdb=				$base->fdb;
+	$it=				$base->it;
 	$prefix=			$base->prefix;
 
 	$fn_reg->prefix=	$prefix;
 	$fn_reg->db=		$db;
+	$fn_reg->fdb=		$fdb;
+	$fn_reg->it=		$it;
 	$fn_reg->base=		$base;
     $fn_reg->fn_ajax=   $fn_ajax;
 

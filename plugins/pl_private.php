@@ -25,7 +25,7 @@ function engine() {
                 $this->de['fn_markup']->insBeforeCloseTag($this->de['html'],$style,'css');
                 $this->mdl_pr=$this->de['fn_models']->loadModel('users_private');
                 $this->insUserInfo("account|adress|reg_date");
-                $this->getCountersById($this->mdl_pr,$user_id);
+                $this->getCountersById($this->mdl_pr,$user_id,$this->account);
                 $this->de['fn_markup']->insPlaceKeyTag($this->de['html'],$this->mdl_pr,'users_private');
             }
        }
@@ -41,30 +41,27 @@ function insUserInfo($ms) {
     }
 }
 
-function getCountersById(&$mdl,$id) {
-    if ((isset($this->de['base'])) && (isset($this->de['db']))) {    
-        $sql="SELECT 
-                users.email as 'email', 
-                profiles.OCC as 'ooc', 
-                counters.id as 'id', 
-                counters.serv as 'serv', 
-                counters.serial as 'serial', 
-                vals.value as 'value',
-                vals.postdt as 'date'
-            FROM  `mauric_dataUsers` users
-            LEFT JOIN mauric_base_profiles profiles ON ( profiles.OCC = users.account ) 
-            LEFT JOIN mauric_base_counters counters ON ( profiles.id = counters.profile_id ) 
-            LEFT JOIN mauric_base_values vals ON ( vals.counter_id = counters.id ) 
-            WHERE (users.id=".$id.") GROUP by vals.counter_id ORDER by vals.id DESC";
-        	$this->res=mysql_query($sql,$this->de['db']);
+function getCountersById(&$mdl,$id,$account) { $sql=""; $this->i=0;
+    if ((isset($this->de['fdb'])) && (isset($this->de['it']))) { 
+			$sql.="SELECT de.d\$uuid as ID, de.vid as SERV, de.caption as SERIAL ";
+			$sql.="FROM accounts ac ";
+			$sql.="LEFT JOIN device de on ac.d\$uuid=de.account_d\$uuid ";
+			$sql.="WHERE ac.caption='".$account."' ";
+        	$this->res=ibase_query($this->de['it'],$sql);
             if (isset($this->res)) {
                 if ($this->res) {
-                  while ($this->row=mysql_fetch_array($this->res)) {
-                    $sql_2="SELECT * FROM  `mauric_base_values`
-                            WHERE (counter_id=".$this->row['id'].") GROUP by postdt, value ORDER by value DESC";
-                	$this->res_2=mysql_query($sql_2,$this->de['db']);
+                  while ($this->row=ibase_fetch_object($this->res)) { $sql_2=""; $this->i++;
+					$sql_2.="SELECT ";
+					$sql_2.="FIRST 1 ";
+					$sql_2.="ad.val as VAL, ";
+					$sql_2.="ad.insertdt as POSTDT ";
+					$sql_2.="FROM account_data ad ";
+					$sql_2.="WHERE ad.device_d\$uuid='".$this->row->ID."' ";
+					$sql_2.="ORDER by ad.insertdt DESC ";
+					$this->sql_2=$sql_2;
+                	$this->res_2=ibase_query($this->de['it'],$sql_2);
                 	if (isset($this->res_2)) { if ($this->res_2) {
-						$this->row_2=mysql_fetch_array($this->res_2);
+						$this->row_2=ibase_fetch_object($this->res_2);
 						$this->mdl_counter=$this->de['fn_models']->loadModel('users_counter');
 						$this->insUserData("id|serv|serial|value|postdt");
 						$this->de['fn_markup']->insBeforeCloseTag($mdl,$this->mdl_counter,'users_private_counters');
@@ -76,23 +73,74 @@ function getCountersById(&$mdl,$id) {
 }
 
 function insUserData($ms) {
-    $mas=explode("|",$ms);
-    foreach($mas as $key) {
+	foreach (explode("|",$ms) as $key) {
+		$tag="users_counter_".$key."";
+		switch ($key) {
+			case "id":
+				$v=$this->i;
+			break;
+			case "serv":
+				if (isset($this->row->SERV)) {
+					$v=$this->row->SERV;
+				} else { $v="-"; }
+			break;
+			case "serial":
+				if (isset($this->row->SERIAL)) {
+					$v=$this->row->SERIAL;
+				} else { $v="-"; }
+			break;
+			case "value":
+				if (isset($this->row_2->POSTDT)) {
+					$v=$this->row_2->POSTDT;
+				} else { $v="-"; }
+			break;
+			case "postdt":
+				if (isset($this->row_2->POSTDT)) {
+					$v=$this->row_2->POSTDT;
+				} else { $v="-"; }
+			break;
+		}		
+        $this->de['fn_markup']->insPlaceKeyTag($this->mdl_counter,$v,$tag);
+	}
+	
+}
+
+
+/*function insUserData($ms) {
+    foreach(explode("|",$ms) as $key) {
         $mark="users_counter_".$key;
-        if (($key!="value") && ($key!="postdt")) {
-            if (isset($this->row[$key])) {
-                $value=$this->row[$key];
+        if (($key!="VALUE") && ($key!="POSTDT")) {
+            if (isset($this->row->$key)) {
+                $value=$this->row->$key;
                 if ($key=="date") { $this->de['fn_private']->getDate($value); }
-                if ($key=="serv") { $this->de['fn_private']->getServiceName($value); }
+                if ($key=="SERV") { $this->de['fn_private']->getServiceName($value); }
             }
         } else {
-            if (isset($this->row_2[$key])) {
-                $value=$this->row_2[$key];
-                if ($key=="postdt") { $this->de['fn_private']->getDate($value); }
-            }
+            //if (isset($this->row_2->$key)) {
+				if ($key=="VALUE") { 
+					$value=$this->row_2->VAL;
+				} else {
+					$value=$this->row_2->$key;
+				}
+                if ($key=="POSTDT") { $this->de['fn_private']->getDate($value); }
+            //}
         }
-        $this->de['fn_markup']->insPlaceKeyTag($this->mdl_counter,$value,$mark);
+        $this->de['fn_markup']->insPlaceKeyTag($this->mdl_counter,$value,strtolower($mark));
     }
-}
+}*/
+
+/*        $sql="SELECT 
+                users.email as 'email', 
+                profiles.OCC as 'ooc', 
+                counters.id as 'id', 
+                counters.serv as 'serv', 
+                counters.serial as 'serial', 
+                vals.value as 'value',
+                vals.postdt as 'date'
+            FROM  `mauric_dataUsers` users
+            LEFT JOIN mauric_base_profiles profiles ON ( profiles.OCC = users.account ) 
+            LEFT JOIN mauric_base_counters counters ON ( profiles.id = counters.profile_id ) 
+            LEFT JOIN mauric_base_values vals ON ( vals.counter_id = counters.id ) 
+            WHERE (users.id=".$id.") GROUP by vals.counter_id ORDER by vals.id DESC";*/
 
 } ?>

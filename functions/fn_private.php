@@ -41,7 +41,7 @@ function getLastValue($id) {
 		if (isset($line_ms)) {	if (isset($line_ms['res']))	{	if ($line_ms['res']) {
         			$line_row=mysql_fetch_array($line_ms['res']);
                     if (isset($line_row['id'])) { $ms['id']=$line_row['id']; }
-                    if (isset($line_row['value'])) { $ms['value']=$line_row['value']; }
+                    if (isset($line_row['value'])) { $ms['value']=$linepost_row['value']; }
 		}	}	}
     }
     if (isset($ms['value'])) { $last=$ms['value']; } else { $last="123"; }
@@ -157,4 +157,5 @@ function getAdress($ms) {
 }
 
 } ?>
+
 
