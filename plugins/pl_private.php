@@ -51,16 +51,16 @@ function getCountersById(&$mdl,$id) {
                 counters.serial as 'serial', 
                 vals.value as 'value',
                 vals.postdt as 'date'
-            FROM  `".$this->de['prefix']."_dataUsers` users
-            LEFT JOIN ".$this->de['prefix']."_base_profiles profiles ON ( profiles.OCC = users.account ) 
-            LEFT JOIN ".$this->de['prefix']."_base_counters counters ON ( profiles.id = counters.profile_id ) 
-            LEFT JOIN ".$this->de['prefix']."_base_values vals ON ( vals.counter_id = counters.id ) 
+            FROM  `mauric_dataUsers` users
+            LEFT JOIN mauric_base_profiles profiles ON ( profiles.OCC = users.account ) 
+            LEFT JOIN mauric_base_counters counters ON ( profiles.id = counters.profile_id ) 
+            LEFT JOIN mauric_base_values vals ON ( vals.counter_id = counters.id ) 
             WHERE (users.id=".$id.") GROUP by vals.counter_id ORDER by vals.id DESC";
         	$this->res=mysql_query($sql,$this->de['db']);
             if (isset($this->res)) {
                 if ($this->res) {
                   while ($this->row=mysql_fetch_array($this->res)) {
-                    $sql_2="SELECT * FROM  `".$this->de['prefix']."_base_values`
+                    $sql_2="SELECT * FROM  `mauric_base_values`
                             WHERE (counter_id=".$this->row['id'].") GROUP by postdt, value ORDER by value DESC";
                 	$this->res_2=mysql_query($sql_2,$this->de['db']);
                 	if (isset($this->res_2)) { if ($this->res_2) {

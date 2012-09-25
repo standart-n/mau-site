@@ -5,6 +5,7 @@ var $run="\r\n";
 var $runn="\r\n\r\n";
 
 function engine() {
+	//if ((isset($this->de['fdb'])) && (isset($this->de['it']))) { echo 'fb'; }
     $this->getCookies();
     $script=$this->de['fn_models']->loadScript('reg');
     $this->de['fn_markup']->insBeforeCloseTag($this->de['html'],$script,'js');
@@ -15,7 +16,7 @@ function engine() {
             setcookie("user_lastEmail",$email,time()+2628000);
             $password=strval(htmlspecialchars(trim(stripslashes(strtolower($_POST['users_password'])))));
             if ((isset($this->de['base'])) && (isset($this->de['db']))) {    
-            	$sql="SELECT * FROM `".$this->de['prefix']."_dataUsers` WHERE (`email`=\"$email\") AND (`status`>0)";
+            	$sql="SELECT * FROM `mauric_dataUsers` WHERE (`email`=\"$email\") AND (`status`>0)";
             	$res=mysql_query($sql,$this->de['db']);
                 if (isset($res)) {
                   if ($res) {
@@ -206,7 +207,7 @@ function addUser() {
     $show="FALSE";
     $this->password_code=md5(md5($this->password)."deCMS");
     if ((isset($this->de['base'])) && (isset($this->de['db']))) {    
-    	$sql="INSERT INTO `".$this->de['prefix']."_dataUsers` 
+    	$sql="INSERT INTO `mauric_dataUsers` 
                     (email,password,account,street,house,building,flat,status,post_dt,post_d,post_t)
                         values (\"$this->email\",\"$this->password_code\",\"$this->account\",
                                 \"$this->street\",\"$this->house\",\"$this->building\",\"$this->flat\",
@@ -227,7 +228,7 @@ function addUser() {
 function activationUserById($id) {
     $show="FALSE";
     if ((isset($this->de['base'])) && (isset($this->de['db']))) {    
-    	$sql="UPDATE `".$this->de['prefix']."_dataUsers` set `status`=1 WHERE (`id`=".$id.")";
+    	$sql="UPDATE `mauric_dataUsers` set `status`=1 WHERE (`id`=".$id.")";
     	$res=mysql_query($sql,$this->de['db']);
         if (isset($res)) {
             if ($res) {
@@ -287,15 +288,15 @@ function showModelByName($name) {
 function mailToUser() {
 $code=md5(md5(date("j").$this->user_id.$this->email."deCMS"));
 $email=$this->email;
-$subject="Ïîäòâåðæäåíèå ðåãèñòðàöèè";
-$message="Çäðàâñòâóéòå!\n 
-Ñïàñèáî çà ðåãèñòðàöèþ íà ñàéòå Èíôîðìàöèîííî-ðàñ÷åòíîãî öåíòðà, www.mauric.ru\n
-Âàø ëèöåâîé ñ÷åò: ".$this->account."
-Âàø ïàðîëü: ".$this->password."\n
-×òîáû àêòèâèðîâàòü âàøó ó÷åòíóþ çàïèñü, ïåðåéäèòå ïî ññûëêå:
+$subject="ÐŸÐ¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ðµ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸";
+$message="Ð—Ð´Ñ€Ð°Ð²ÑÑ‚Ð²ÑƒÐ¹Ñ‚Ðµ!\n 
+Ð¡Ð¿Ð°ÑÐ¸Ð±Ð¾ Ð·Ð° Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸ÑŽ Ð½Ð° ÑÐ°Ð¹Ñ‚Ðµ Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¾Ð½Ð½Ð¾-Ñ€Ð°ÑÑ‡ÐµÑ‚Ð½Ð¾Ð³Ð¾ Ñ†ÐµÐ½Ñ‚Ñ€Ð°, www.mauric.ru\n
+Ð’Ð°Ñˆ Ð»Ð¸Ñ†ÐµÐ²Ð¾Ð¹ ÑÑ‡ÐµÑ‚: ".$this->account."
+Ð’Ð°Ñˆ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ: ".$this->password."\n
+Ð§Ñ‚Ð¾Ð±Ñ‹ Ð°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð²Ð°ÑˆÑƒ ÑƒÑ‡ÐµÑ‚Ð½ÑƒÑŽ Ð·Ð°Ð¿Ð¸ÑÑŒ, Ð¿ÐµÑ€ÐµÐ¹Ð´Ð¸Ñ‚Ðµ Ð¿Ð¾ ÑÑÑ‹Ð»ÐºÐµ:
 http://www.mauric.ru/de.".$code.".".$this->user_id.".activation\n
-Ñ óâàæåíèåì,\n àäìèíèñòðàöèÿ Ìóíèöèïàëüíîãî àâòîíîìíîãî ó÷ðåæäåíèÿ\n Ðàñ÷åòíî-èíôîðìàöèîííûé öåíòð, www.mauric.ru";
-mail($email,$subject,$message);
+Ð¡ ÑƒÐ²Ð°Ð¶ÐµÐ½Ð¸ÐµÐ¼,\n Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ ÐœÑƒÐ½Ð¸Ñ†Ð¸Ð¿Ð°Ð»ÑŒÐ½Ð¾Ð³Ð¾ Ð°Ð²Ñ‚Ð¾Ð½Ð¾Ð¼Ð½Ð¾Ð³Ð¾ ÑƒÑ‡Ñ€ÐµÐ¶Ð´ÐµÐ½Ð¸Ñ\n Ð Ð°ÑÑ‡ÐµÑ‚Ð½Ð¾-Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¾Ð½Ð½Ñ‹Ð¹ Ñ†ÐµÐ½Ñ‚Ñ€, www.mauric.ru";
+mail($email,$subject,$message,"From:registration@mauric.ru");
 }
 
 } ?>

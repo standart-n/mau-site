@@ -26,9 +26,10 @@ function getBaseFromSite() {
     $this->settings_path="settings/config.ini";
    	if (file_exists($this->settings_path)) { 
     	$this->db=$this->connect();
+    	$this->fdb=$this->fconnect();
     	$this->prefix=$this->prefix;
     } else {
-        die("Íå íàéäåí ôàéë íàñòðîåê ïîäêëþ÷åíèÿ ê áàçå äàííûõ");
+        die("ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½ Ñ„Ð°Ð¹Ð» Ð½Ð°ÑÑ‚Ñ€Ð¾ÐµÐº Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ Ðº Ð±Ð°Ð·Ðµ Ð´Ð°Ð½Ð½Ñ‹Ñ…");
     } 
     
 }
@@ -40,7 +41,7 @@ function getBaseFromAdmin() {
     	$this->db=$this->connect();
     	$this->prefix=$this->prefix;
     } else {
-        die("Íå íàéäåí ôàéë íàñòðîåê ïîäêëþ÷åíèÿ ê áàçå äàííûõ");
+        die("ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½ Ñ„Ð°Ð¹Ð» Ð½Ð°ÑÑ‚Ñ€Ð¾ÐµÐº Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ Ðº Ð±Ð°Ð·Ðµ Ð´Ð°Ð½Ð½Ñ‹Ñ…");
     } 
     
 }
@@ -52,27 +53,39 @@ function getBaseFromModule() {
     	$this->db=$this->connect();
     	$this->prefix=$this->prefix;
     } else {
-        die("Íå íàéäåí ôàéë íàñòðîåê ïîäêëþ÷åíèÿ ê áàçå äàííûõ");
+        die("ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½ Ñ„Ð°Ð¹Ð» Ð½Ð°ÑÑ‚Ñ€Ð¾ÐµÐº Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ Ðº Ð±Ð°Ð·Ðµ Ð´Ð°Ð½Ð½Ñ‹Ñ…");
     } 
     
 }
 
 function getDB() {
-	// ôóíêöèÿ ïîäêëþ÷åíèÿ ê áàçå äàííûõ
+	// Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ Ðº Ð±Ð°Ð·Ðµ Ð´Ð°Ð½Ð½Ñ‹Ñ…
 
 	$host=$this->host;
 	$dbname=$this->dbname;
 	$login=$this->login;
 	$password=$this->password;
-	$db=mysql_connect($host,$login,$password) or die("Íåò ïîäêëþ÷åíèÿ ê áàçå äàííûõ");
-	$isok=mysql_select_db($dbname,$db) or die("Îøèáêà ïðè âûïîëíåíèè sql-çàïðîñîâ");
-	mysql_query("/*!40101 SET NAMES 'cp1251' */",$db) or die("Îøèáêà ïðè èçìåíåíèè êîäèðîâêè áàçû äàííûõ");
+	$db=mysql_connect($host,$login,$password) or die("ÐÐµÑ‚ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ Ðº Ð±Ð°Ð·Ðµ Ð´Ð°Ð½Ð½Ñ‹Ñ…");
+	$isok=mysql_select_db($dbname,$db) or die("ÐžÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ð¸ sql-Ð·Ð°Ð¿Ñ€Ð¾ÑÐ¾Ð²");
+	mysql_query("/*!40101 SET NAMES 'cp1251' */",$db) or die("ÐžÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ð¸ ÐºÐ¾Ð´Ð¸Ñ€Ð¾Ð²ÐºÐ¸ Ð±Ð°Ð·Ñ‹ Ð´Ð°Ð½Ð½Ñ‹Ñ…");
 	return $db;
 
 }
 
+function getFDB() {
+	// Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ Ðº Ð±Ð°Ð·Ðµ Ð´Ð°Ð½Ð½Ñ‹Ñ…
+
+	$path=$this->fdb_path;
+	$login=$this->fdb_login;
+	$password=$this->fdb_password;
+	$fdb=ibase_connect($path,$login,$password);
+	$this->it=ibase_trans(IBASE_WRITE+IBASE_COMMITTED+IBASE_REC_VERSION+IBASE_NOWAIT,$fdb);
+	return $fdb;
+}
+
+
 function sqlSelect() {
-	// ôóíêöèÿ äëÿ ðàáîòû ñ sql çàïðîñàìè
+	// Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ sql Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°Ð¼Ð¸
 
 	$ms=array();
 	$this->res=mysql_query($this->sql,$this->db);
@@ -85,8 +98,19 @@ function sqlSelect() {
 
 }
 
+function fdbSelect() {
+	// Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ sql Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°Ð¼Ð¸
+
+	$ms=array();
+	$this->res=ibase_query($this->sql,$this->it);
+	$ms['res']=$this->res;
+	return $ms;
+
+}
+
+
 function connect() {
-	// áûñòðîå ïîäêëþ÷åíèå ê áä
+	// Ð±Ñ‹ÑÑ‚Ñ€Ð¾Ðµ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ Ðº Ð±Ð´
 
  	$this->config_ini=			parse_ini_file($this->settings_path,true);
  	$this->host=				$this->config_ini['base']['host'];
@@ -98,6 +122,19 @@ function connect() {
 	return $this->db;
 
 }
+
+function fconnect() {
+	// Ð±Ñ‹ÑÑ‚Ñ€Ð¾Ðµ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ Ðº Ð±Ð´
+
+ 	$this->config_ini=				parse_ini_file($this->settings_path,true);
+ 	$this->fdb_path=				$this->config_ini['fdb']['fdb_path'];
+ 	$this->fdb_login=				$this->config_ini['fdb']['fdb_login'];
+ 	$this->fdb_password=			$this->config_ini['fdb']['fdb_password'];
+	$this->fdb=						$this->getFDB();	
+	return $this->fdb;
+
+}
+
 
 
 }

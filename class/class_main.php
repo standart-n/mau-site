@@ -94,6 +94,8 @@ function check_base() {
 	$this->base->getBaseFromSite();
     $this->de['base']=					$this->base;
 	$this->de['db']=					$this->base->db;
+	$this->de['fdb']=					$this->base->fdb;
+	$this->de['it']=					$this->base->it;
 	$this->de['prefix']=				$this->base->prefix;
 }
 
