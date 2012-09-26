@@ -77,7 +77,9 @@ function insUserData($ms) {
 		$tag="users_counter_".$key."";
 		switch ($key) {
 			case "id":
-				$v=$this->i;
+				if (isset($this->row->ID)) {
+					$v=$this->row->ID;
+				} else { $v=$this->i; }
 			break;
 			case "serv":
 				if (isset($this->row->SERV)) {
@@ -90,13 +92,14 @@ function insUserData($ms) {
 				} else { $v="-"; }
 			break;
 			case "value":
-				if (isset($this->row_2->POSTDT)) {
-					$v=$this->row_2->POSTDT;
+				if (isset($this->row_2->VAL)) {
+					$v=$this->row_2->VAL;
 				} else { $v="-"; }
 			break;
 			case "postdt":
 				if (isset($this->row_2->POSTDT)) {
-					$v=$this->row_2->POSTDT;
+					$v=$this->de['fn_private']->getDateRtn($this->row_2->POSTDT);
+					//$v=$this->de['fn_markup']->getRegDate($this->row_2->POSTDT);
 				} else { $v="-"; }
 			break;
 		}		
@@ -105,42 +108,5 @@ function insUserData($ms) {
 	
 }
 
-
-/*function insUserData($ms) {
-    foreach(explode("|",$ms) as $key) {
-        $mark="users_counter_".$key;
-        if (($key!="VALUE") && ($key!="POSTDT")) {
-            if (isset($this->row->$key)) {
-                $value=$this->row->$key;
-                if ($key=="date") { $this->de['fn_private']->getDate($value); }
-                if ($key=="SERV") { $this->de['fn_private']->getServiceName($value); }
-            }
-        } else {
-            //if (isset($this->row_2->$key)) {
-				if ($key=="VALUE") { 
-					$value=$this->row_2->VAL;
-				} else {
-					$value=$this->row_2->$key;
-				}
-                if ($key=="POSTDT") { $this->de['fn_private']->getDate($value); }
-            //}
-        }
-        $this->de['fn_markup']->insPlaceKeyTag($this->mdl_counter,$value,strtolower($mark));
-    }
-}*/
-
-/*        $sql="SELECT 
-                users.email as 'email', 
-                profiles.OCC as 'ooc', 
-                counters.id as 'id', 
-                counters.serv as 'serv', 
-                counters.serial as 'serial', 
-                vals.value as 'value',
-                vals.postdt as 'date'
-            FROM  `mauric_dataUsers` users
-            LEFT JOIN mauric_base_profiles profiles ON ( profiles.OCC = users.account ) 
-            LEFT JOIN mauric_base_counters counters ON ( profiles.id = counters.profile_id ) 
-            LEFT JOIN mauric_base_values vals ON ( vals.counter_id = counters.id ) 
-            WHERE (users.id=".$id.") GROUP by vals.counter_id ORDER by vals.id DESC";*/
 
 } ?>

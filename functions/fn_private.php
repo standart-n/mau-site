@@ -3,57 +3,71 @@
 var $db;
 var $id;
 
-function getCounterInfoById($id) {
+function getCounterInfoById($id) { $sql="";
     $this->ms=array();
-   	if ((isset($this->db)) && (isset($this->base))) {
-		$this->base->db=$this->db;
-		$this->base->sql="SELECT * FROM `".$this->prefix."_base_counters` WHERE (`id`=".$id.")";
-		$this->line_ms=$this->base->sqlSelect();
+   	if ((isset($this->fdb)) && (isset($this->it))) {
+		$this->base->fdb=$this->fdb;
+		$this->base->it=$this->it;
+		$sql.="select de.d\$uuid as ID, de.vid as SERV, de.caption as SERIAL, de.account_d\$uuid as PROFILE_ID ";
+		$sql.="from device de ";
+		$sql.="where de.d\$uuid='".$id."' ";
+		$this->base->sql=$sql;
+		$this->line_ms=$this->base->fdbSelect();
 		if (isset($this->line_ms)) {	if (isset($this->line_ms['res']))	{	if ($this->line_ms['res']) {
-			$this->line_row=mysql_fetch_array($this->line_ms['res']);
-			$this->getRow("id|serv|serial|profile_id");
+			$this->row=ibase_fetch_object($this->line_ms['res']);
+			//$this->row->SQL=$sql;
+			$this->getRow(strtoupper("id|serv|serial|profile_id|sql"));
 		}	}	}
     }	return $this->ms;
 }
 
 function getRow($line) { $mas=explode("|",$line);
-	foreach ($mas as $key) { if (isset($this->line_row[$key])) { 
-		$this->ms[$key]=$this->line_row[$key];	} else { $this->ms[$key]=""; }	}
+	foreach ($mas as $key) { 
+		if (isset($this->row->$key)) { 
+			$this->ms[strtolower($key)]=$this->row->$key;	
+		} else { 
+			$this->ms[strtolower($key)]="";
+		}
+	}
 }
 
 function getServiceName(&$name) {
     switch ($name){
-		case "С…РІРѕРґ": $name="РҐРѕР»РѕРґРЅР°СЏ РІРѕРґР°"; break;
-		case "РіРІРѕРґ": $name="Р“РѕСЂСЏС‡Р°СЏ РІРѕРґР°"; break;
-		case "СЌР»РµРє": $name="Р­Р»РµРєС‚СЂРѕСЌРЅРµСЂРіРёСЏ"; break;
-		case "РѕС‚РѕРї": $name="РўРµРїР»РѕСЌРЅРµСЂРіРёСЏ"; break;
-		case "РїРіР°Р·": $name="Р“Р°Р·РѕСЃРЅР°Р±Р¶РµРЅРёРµ"; break;
+		case "хвод": $name="Холодная вода"; break;
+		case "гвод": $name="Горячая вода"; break;
+		case "элек": $name="Электроэнергия"; break;
+		case "отоп": $name="Теплоэнергия"; break;
+		case "пгаз": $name="Газоснабжение"; break;
     }	return $name;
 }
 
-function getLastValue($id) {
-   	if ((isset($this->db)) && (isset($this->base))) {
-		$this->base->db=$this->db;
-		$this->base->sql="SELECT * FROM `".$this->prefix."_base_values` 
-							WHERE (`counter_id`=".$id.") 
-							ORDER by postdt DESC"; 
-		$line_ms=$this->base->sqlSelect();
+function getLastValue($id) { $sql="";
+   	if ((isset($this->fdb)) && (isset($this->it))) {
+		$this->base->fdb=$this->fdb;
+		$this->base->it=$this->it;
+		$sql.="select ";
+		$sql.="first 1 ";
+		$sql.="ad.val as VAL ";
+		$sql.="from account_data ad ";
+		$sql.="where (ad.device_d\$uuid='".$id."') ";
+		$sql.="order by ad.insertdt desc ";
+		$this->base->sql=$sql; 
+		$line_ms=$this->base->fdbSelect();
 		if (isset($line_ms)) {	if (isset($line_ms['res']))	{	if ($line_ms['res']) {
-        			$line_row=mysql_fetch_array($line_ms['res']);
-                    if (isset($line_row['id'])) { $ms['id']=$line_row['id']; }
-                    if (isset($line_row['value'])) { $ms['value']=$linepost_row['value']; }
+        			$row=ibase_fetch_object($line_ms['res']);
+                    if (isset($row->VAL)) { $ms['value']=$row->VAL; }
 		}	}	}
     }
-    if (isset($ms['value'])) { $last=$ms['value']; } else { $last="123"; }
+    if (isset($ms['value'])) { $last=$ms['value']; } else { $last=10000; }
     return $last;
 }
 
 function getDialogCode($ms) {
     $show="";
     $show.="<table cellpadding=\"2\" cellspacing=\"0\" border=\"0\">";
-    $show.=$this->getDialogLine("ID",$ms['id']);
-    $show.=$this->getDialogLine("РЈСЃР»СѓРіР°",$this->getServiceName($ms['serv']));
-    $show.=$this->getDialogLine("РќРѕРјРµСЂ",$ms['serial']);
+    $show.=$this->getDialogLine("ID",substr($ms['id'],0,4));
+    $show.=$this->getDialogLine("Услуга",$this->getServiceName($ms['serv']));
+    $show.=$this->getDialogLine("Номер",$ms['serial']);
     $show.=$this->showDialogNewValue($ms['id']);
     $show.="</table>";
     return $show;
@@ -73,7 +87,7 @@ function getLastPacket() {
     $packet=1;
    	if ((isset($this->db)) && (isset($this->base))) {
 		$this->base->db=$this->db;
-		$this->base->sql="SELECT * FROM `".$this->prefix."_base_packets` 
+		$this->base->sql="SELECT * FROM `mauric_base_packets` 
 							WHERE (1=1) 
 							GROUP by id
 							ORDER by id DESC"; 
@@ -81,9 +95,9 @@ function getLastPacket() {
 		if (isset($line_ms)) {	if (isset($line_ms['res']))	{	if ($line_ms['res']) {
 			$line_row=mysql_fetch_array($line_ms['res']);
 			if (isset($line_row['id'])) { $ms['id']=$line_row['id']; }
-		}	}	}
+		} } }
     }
-    if (isset($ms['id'])) {	if (($ms['id'])>0) {	$packet=$ms['id'];	}	}
+    if (isset($ms['id'])) { if (($ms['id'])>0) { $packet=$ms['id']; } }
     return $packet;
 }
 
@@ -97,24 +111,28 @@ function getNewValue($id,$value) {
     $notice="";
     $query="FALSE";
     $last=$this->getLastValue($id);
-    $packet=$this->getLastPacket();
     $user=$_SESSION['user_id'];
     $zero=0;
+    $sql="";
     if ((intval($value))>0) {
         if ((intval($value))>(intval($last))) {
-   	        if ((isset($this->db)) && (isset($this->base))) {
-                $sql="INSERT INTO `".$this->prefix."_base_values` (counter_id,value,postdt) 
-                      VALUES (\"$id\",\"$value\",NOW())";
-        	    $res=mysql_query($sql,$this->db);
+   	        if ((isset($this->fdb)) && (isset($this->it))) {
+				$sql.="insert into account_data ";
+				$sql.="(val,insertdt,status,updatesession_id,device_d\$uuid) ";
+				$sql.="values ";
+				$sql.="(".$value.",current_timestamp,0,0,'".$id."') ";
+        	    $res=ibase_query($this->it,$sql);
+				ibase_commit($this->it);
+				$this->it=ibase_trans(IBASE_WRITE+IBASE_COMMITTED+IBASE_REC_VERSION+IBASE_NOWAIT,$this->fdb);
                 if (isset($res)) {
                     if ($res) {
-                     $notice="Р—РЅР°С‡РµРЅРёРµ РѕР±РЅРѕРІР»РµРЅРѕ!";
+                     $notice="Значение обновлено!";
                      $query="TRUE";                                                
-                    } else { $notice="Р—Р°РїСЂРѕСЃ РЅРµ РІС‹РїРѕР»РЅРµРЅ"; }
-                } else { $notice="Р—Р°РїСЂРѕСЃ РЅРµ РІС‹РїРѕР»РЅРµРЅ"; }
-            }  else { $notice="Р’РѕР·РЅРёРєР»Рё РїСЂРѕР±Р»РµРјС‹ СЃ РїРѕРґРєР»СЋС‡РµРЅРёРµРј Рє Р±Р°Р·Рµ РґР°РЅРЅС‹С…"; }
-        } else { $notice="РќРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ СЃС‚Р°СЂРѕРіРѕ"; }
-    } else { $notice="РќРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РЅСѓР»СЏ"; }
+                    } else { $notice="Запрос не выполнен"; }
+                } else { $notice="Запрос не выполнен"; }
+            }  else { $notice="Возникли проблемы с подключением к базе данных"; }
+        } else { $notice="Новое значение не может быть меньше старого"; }
+    } else { $notice="Новое значение должно быть больше нуля"; }
     $ms['notice']="<div class=\"private_dlg_notice\">".$notice."</div>";
     $ms['query']=$query;
     return $ms;
@@ -125,12 +143,12 @@ function showDialogNewValue($id) {
     $show="";
     $show.="<tr height=\"10px\"><td></td></tr>";
     $show.="<tr><td colspan=\"2\">";
-    $show.="Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ:";
+    $show.="Введите новое значение:";
     $show.="</td></tr>";
     $show.="<tr><td colspan=\"2\">";
     $show.="<input id=\"private_dlg_value\" type=\"text\" value=\"".$last."\">";
     $show.="<input id=\"private_dlg_id\" type=\"hidden\" value=\"".$id."\">";
-    $show.="<span class=\"private_link\"><a id=\"private_ins_newValue\" href=\"#de\">СЃРѕС…СЂР°РЅРёС‚СЊ</a></span>";
+    $show.="<span class=\"private_link\"><a id=\"private_ins_newValue\" href=\"#de\">сохранить</a></span>";
     $show.="</td></tr>";
     return  $show;    
 }
@@ -147,15 +165,22 @@ function getDate(&$date) {
     $date=$day.".".$month.".".$year;
 }
 
+function getDateRtn($date) {
+    $ms=explode("-",substr($date,0,10));	
+    $year=$ms[0];	$month=$ms[1];	$day=$ms[2];
+    return $day.".".$month.".".$year; 
+}
+
 function getAdress($ms) {
     $adress="";
     if (((isset($ms['street'])) && (($ms['street'])!="")))  { $adress.=$ms['street'];  }
-    if (((isset($ms['house'])) && (($ms['house'])!="")))    { $adress.=", Рґ.".$ms['house'];  }
-    if (((isset($ms['building'])) && (($ms['building'])!=""))) { $adress.=", Рє.".$ms['building'];  }
-    if (((isset($ms['flat'])) && (($ms['flat'])!="")))     { $adress.=", РєРІ.".$ms['flat'];  }
+    if (((isset($ms['house'])) && (($ms['house'])!="")))    { $adress.=", д.".$ms['house'];  }
+    if (((isset($ms['building'])) && (($ms['building'])!=""))) { $adress.=", к.".$ms['building'];  }
+    if (((isset($ms['flat'])) && (($ms['flat'])!="")))     { $adress.=", кв.".$ms['flat'];  }
     return $adress;
 }
 
 } ?>
+
 
 

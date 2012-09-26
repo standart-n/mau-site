@@ -1,5 +1,5 @@
 $(document).ready(function () {			
-    new showDialog(de={
+    new showDialog({
         object:".users_private_link a",
         dialogId:"private_dlg",
         uplineId:"private_dlg_upline",
@@ -11,7 +11,7 @@ $(document).ready(function () {
         closeButton:"private_link",
         height:"200px"
     });												
-    new showDialog(de={
+    new showDialog({
         object:"#private_ins_newValue",
         dialogId:"private_dlg_newValue",
         contentId:"private_dlg_newValue_content",
@@ -33,3 +33,5 @@ function private_editCounter(id) {
     value=document.getElementById("private_dlg_value_"+id).innerHTML;
     deAjax('external/ajax_private.php?type=checkCounter&action=info&id='+id+'&value='+value);
 }
+
+
