@@ -18,110 +18,110 @@ var $table;
 function check_email($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="e-mail Ğ°Ğ´Ñ€ĞµÑ";
+    $ms['field']="e-mail àäğåñ";
     if ($line!="") {
       if (strlen($line)>3) {
        if (preg_match("/[0-9a-z_]+@[0-9a-z_^\.]+\.[a-z]{2,3}/i", $line)) {
           if ($this->emailExists($line)=="FALSE") {
                 $ms['check']="TRUE";
-          } else { $ms['error']="Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»ÑŒ Ñ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğ¼ e-mail Ğ°Ğ´Ñ€ĞµÑĞ¾Ğ¼ ÑƒĞ¶Ğµ Ğ·Ğ°Ñ€ĞµĞ³Ğ¸ÑÑ‚Ñ€Ğ¸Ñ€Ğ¾Ğ²Ğ°Ğ½"; }
-       }  else { $ms['error']="Ğ½Ğµ ÑĞ²Ğ»ÑĞµÑ‚ÑÑ e-mail Ğ°Ğ´Ñ€ĞµÑĞ¾Ğ¼"; }
-      } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ ĞºĞ¾Ñ€Ğ¾Ñ‚ĞºĞ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
-    } else { $ms['error']="Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ğ½Ğµ ÑƒĞºĞ°Ğ·Ğ°Ğ½Ğ¾"; }
+          } else { $ms['error']="ïîëüçîâàòåëü ñ äàííûì e-mail àäğåñîì óæå çàğåãèñòğèğîâàí"; }
+       }  else { $ms['error']="íå ÿâëÿåòñÿ e-mail àäğåñîì"; }
+      } else { $ms['error']="ñëèøêîì êîğîòêîå çíà÷åíèå"; }
+    } else { $ms['error']="çíà÷åíèå íå óêàçàíî"; }
     return $ms;
 }
 
 function check_account($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="Ğ»Ğ¸Ñ†ĞµĞ²Ğ¾Ğ¹ ÑÑ‡ĞµÑ‚";
+    $ms['field']="ëèöåâîé ñ÷åò";
     if ($line!="") {
       if (intval($line)>0) {
         if (($line>1000) && ($line<100000000000)) {
           if ($this->accountExists($line)=="FALSE") {
               if ($this->accountTrueExists($line)=="TRUE") {
                 $ms['check']="TRUE";
-              } else { $ms['error']="Ğ¸Ğ½Ñ„Ğ¾Ñ€Ğ¼Ğ°Ñ†Ğ¸Ğ¸ Ğ¾ Ğ´Ğ°Ğ½Ğ½Ğ¾Ğ¼ Ğ»Ğ¸Ñ†ĞµĞ²Ğ¾Ğ¼ ÑÑ‡ĞµÑ‚Ğµ Ğ½ĞµÑ‚ Ğ² Ğ±Ğ°Ğ·Ğµ Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ…"; }
-          } else { $ms['error']="Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»ÑŒ Ñ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğ¼ Ğ»Ğ¸Ñ†. ÑÑ‡ĞµÑ‚Ğ¾Ğ¼ ÑƒĞ¶Ğµ Ğ·Ğ°Ñ€ĞµĞ³Ğ¸ÑÑ‚Ñ€Ğ¸Ñ€Ğ¾Ğ²Ğ°Ğ½"; }
-        }  else { $ms['error']="ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ·Ğ½Ğ°ĞºĞ¾Ğ² Ğ½Ğµ ÑĞ¾Ğ¾Ñ‚Ğ²ĞµÑ‚ÑÑ‚Ğ²ÑƒĞµÑ‚ Ğ»Ğ¸Ñ†. ÑÑ‡ĞµÑ‚Ñƒ"; }
-      } else { $ms['error']="Ğ½Ğµ ÑĞ²Ğ»ÑĞµÑ‚ÑÑ Ñ‡Ğ¸ÑĞ»Ğ¾Ğ¼"; }
-    } else { $ms['error']="Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ğ½Ğµ ÑƒĞºĞ°Ğ·Ğ°Ğ½Ğ¾"; }
+              } else { $ms['error']="èíôîğìàöèè î äàííîì ëèöåâîì ñ÷åòå íåò â áàçå äàííûõ"; }
+          } else { $ms['error']="ïîëüçîâàòåëü ñ äàííûì ëèö. ñ÷åòîì óæå çàğåãèñòğèğîâàí"; }
+        }  else { $ms['error']="êîëè÷åñòâî çíàêîâ íå ñîîòâåòñòâóåò ëèö. ñ÷åòó"; }
+      } else { $ms['error']="íå ÿâëÿåòñÿ ÷èñëîì"; }
+    } else { $ms['error']="çíà÷åíèå íå óêàçàíî"; }
     return $ms;
 }
 
 function check_password($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="Ğ¿Ğ°Ñ€Ğ¾Ğ»ÑŒ";
+    $ms['field']="ïàğîëü";
     if ($line!="") {
       if (strlen($line)>1) {
         if (strlen($line)<50) {
                 $ms['check']="TRUE";
-        } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ Ğ´Ğ»Ğ¸Ğ½Ğ½Ğ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
-     } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ ĞºĞ¾Ñ€Ğ¾Ñ‚ĞºĞ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
-    } else { $ms['error']="Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ğ½Ğµ ÑƒĞºĞ°Ğ·Ğ°Ğ½Ğ¾"; }
+        } else { $ms['error']="ñëèøêîì äëèííîå çíà÷åíèå"; }
+     } else { $ms['error']="ñëèøêîì êîğîòêîå çíà÷åíèå"; }
+    } else { $ms['error']="çíà÷åíèå íå óêàçàíî"; }
     return $ms;
 }
 
 function check_confirm($psw1,$psw2){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="Ğ¿Ğ°Ñ€Ğ¾Ğ»ÑŒ";
+    $ms['field']="ïàğîëü";
       if ($psw1==$psw2) {
                $ms['check']="TRUE";
-       } else { $ms['error']="Ğ¿Ğ°Ñ€Ğ¾Ğ»Ğ¸ Ğ½Ğµ ÑĞ¾Ğ²Ğ¿Ğ°Ğ´Ğ°ÑÑ‚"; }
+       } else { $ms['error']="ïàğîëè íå ñîâïàäàşò"; }
     return $ms;
 }
 
 function check_street($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="ÑƒĞ»Ğ¸Ñ†Ğ°";
+    $ms['field']="óëèöà";
     if ($line!="") {
       if (strlen($line)>1) {
         if (strlen($line)<50) {
                 $ms['check']="TRUE";
-        } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ Ğ´Ğ»Ğ¸Ğ½Ğ½Ğ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
-     } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ ĞºĞ¾Ñ€Ğ¾Ñ‚ĞºĞ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
-    } else { $ms['error']="Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ğ½Ğµ ÑƒĞºĞ°Ğ·Ğ°Ğ½Ğ¾"; }
+        } else { $ms['error']="ñëèøêîì äëèííîå çíà÷åíèå"; }
+     } else { $ms['error']="ñëèøêîì êîğîòêîå çíà÷åíèå"; }
+    } else { $ms['error']="çíà÷åíèå íå óêàçàíî"; }
     return $ms;
 }
 
 function check_house($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="Ğ´Ğ¾Ğ¼";
+    $ms['field']="äîì";
     if ($line!="") {
       if (strlen($line)>0) {
         if (strlen($line)<50) {
                 $ms['check']="TRUE";
-        } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ Ğ´Ğ»Ğ¸Ğ½Ğ½Ğ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
-      } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ ĞºĞ¾Ñ€Ğ¾Ñ‚ĞºĞ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
-    } else { $ms['error']="Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ğ½Ğµ ÑƒĞºĞ°Ğ·Ğ°Ğ½Ğ¾"; }
+        } else { $ms['error']="ñëèøêîì äëèííîå çíà÷åíèå"; }
+      } else { $ms['error']="ñëèøêîì êîğîòêîå çíà÷åíèå"; }
+    } else { $ms['error']="çíà÷åíèå íå óêàçàíî"; }
     return $ms;
 }
 
 function check_building($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="ĞºĞ¾Ñ€Ğ¿ÑƒÑ";
+    $ms['field']="êîğïóñ";
     if (strlen($line)<50) {
         $ms['check']="TRUE";
-    } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ Ğ´Ğ»Ğ¸Ğ½Ğ½Ğ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
+    } else { $ms['error']="ñëèøêîì äëèííîå çíà÷åíèå"; }
     return $ms;
 }
 
 function check_flat($line){
     $ms=array();
     $ms['check']="FALSE";
-    $ms['field']="ĞºĞ²Ğ°Ñ€Ñ‚Ğ¸Ñ€Ğ°";
+    $ms['field']="êâàğòèğà";
     if ($line!="") {
       if (strlen($line)>0) {
         if (strlen($line)<50) {
                 $ms['check']="TRUE";
-        } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ Ğ´Ğ»Ğ¸Ğ½Ğ½Ğ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
-      } else { $ms['error']="ÑĞ»Ğ¸ÑˆĞºĞ¾Ğ¼ ĞºĞ¾Ñ€Ğ¾Ñ‚ĞºĞ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ"; }
-    } else { $ms['error']="Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ğ½Ğµ ÑƒĞºĞ°Ğ·Ğ°Ğ½Ğ¾"; }
+        } else { $ms['error']="ñëèøêîì äëèííîå çíà÷åíèå"; }
+      } else { $ms['error']="ñëèøêîì êîğîòêîå çíà÷åíèå"; }
+    } else { $ms['error']="çíà÷åíèå íå óêàçàíî"; }
     return $ms;
 }
 
@@ -129,7 +129,7 @@ function getUserById($id) {
     $this->ms=array();
    	if ((isset($this->db)) && (isset($this->base))) {
 		$this->base->db=$this->db;
-        $this->base->sql="SELECT * FROM `".$this->prefix."_dataUsers` WHERE (`id`=".$id.")";
+        $this->base->sql="SELECT * FROM `mauric_dataUsers` WHERE (`id`=".$id.")";
     	$this->line_ms=$this->base->sqlSelect();
 		if (isset($this->line_ms)) {	if (isset($this->line_ms['res']))	{	if ($this->line_ms['res']) {
 			$this->line_row=mysql_fetch_array($this->line_ms['res']);
@@ -144,18 +144,25 @@ function getRow($line) {	$mas=explode("|",$line);
 		$this->ms[$key]=$this->line_row[$key]; 	}	else { $this->ms[$key]="";	}	}
 }
 
-function getUserByAccount($occ) {
+function getUserByAccount($occ) { $s="";
     $ms=array();
-   	if ((isset($this->db)) && (isset($this->base))) {
-		$this->base->db=$this->db;
-        $this->base->sql="SELECT * FROM `".$this->prefix."_base_profiles` WHERE (`OCC`=".$occ.")";
-    	$line_ms=$this->base->sqlSelect();
+   	if ((isset($this->fdb)) && (isset($this->it))) {
+		$this->base->fdb=$this->fdb;
+		$this->base->it=$this->it;        
+        $s.="SELECT ";
+		$s.="ac.caption as OCC, ac.apartment as NOM_KVR, ";
+		$s.="bu.street as STREET, bu.nomer as NOM_DOM ";
+		$s.="FROM ACCOUNTS ac ";
+		$s.="LEFT JOIN buildings bu on (bu.d\$uuid=ac.building_d\$uuid) ";
+		$s.="WHERE (CAPTION='".$occ."') ";
+		$this->base->sql=$s;        
+    	$line_ms=$this->base->fdbSelect();
 		if (isset($line_ms)) {	if (isset($line_ms['res']))	{	if ($line_ms['res']) {
-			$line_row=mysql_fetch_array($line_ms['res']);
-			if (isset($line_row['occ']))      { $ms['occ']=$line_row['occ'];                  }
-			if (isset($line_row['street']))   { $ms['street']=$line_row['street'];            }
-			if (isset($line_row['nom_dom']))  { $ms['nom_dom']=$line_row['nom_dom'];          }
-			if (isset($line_row['nom_kvr']))  { $ms['nom_kvr']=$line_row['nom_kvr'];          }
+			$row=ibase_fetch_object($line_ms['res']);
+			if (isset($row->OCC))      { $ms['occ']=$row->OCC;                  }
+			if (isset($row->STREET))   { $ms['street']=$row->STREET;            }
+			if (isset($row->NOM_DOM))  { $ms['nom_dom']=$row->NOM_DOM;          }
+			if (isset($row->NOM_KVR))  { $ms['nom_kvr']=$row->NOM_KVR;          }
 		}	}	}
     }	return $ms;
 }
@@ -164,7 +171,7 @@ function accountExists($line) {
     $show="FALSE";
    	if ((isset($this->db)) && (isset($this->base))) {
 		$this->base->db=$this->db;
-        $this->base->sql="SELECT * FROM `".$this->prefix."_dataUsers` WHERE (`account`=\"$line\")";
+        $this->base->sql="SELECT * FROM `mauric_dataUsers` WHERE (account='".$line."') AND (status>0)";
     	$line_ms=$this->base->sqlSelect();
 		if (isset($line_ms)) {	if (isset($line_ms['res']))	{	if ($line_ms['res']) {
 			while($line_row=mysql_fetch_array($line_ms['res'])) {
@@ -175,25 +182,32 @@ function accountExists($line) {
 }
 
 function accountTrueExists($line) {
+	$line=trim($line);
     $show="FALSE";
-   	if ((isset($this->db)) && (isset($this->base))) {
-		$this->base->db=$this->db;
-        $this->base->sql="SELECT * FROM `".$this->prefix."_base_profiles` WHERE (`OCC`=\"$line\")";
-    	$line_ms=$this->base->sqlSelect();
+   	if ((isset($this->fdb)) && (isset($this->it))) {
+		$this->base->it=$this->it;
+		$this->base->fdb=$this->fdb;
+        $this->base->sql="SELECT * FROM ACCOUNTS WHERE (CAPTION='".$line."') AND (STATUS=0)";
+    	$line_ms=$this->base->fdbSelect();
 		if (isset($line_ms)) {	if (isset($line_ms['res']))	{	if ($line_ms['res']) {
-			while($line_row=mysql_fetch_array($line_ms['res'])) {
-				$account=$line_row['occ'];
-				if ($account==$line) { $show="TRUE"; }
+			while($row=ibase_fetch_object($line_ms['res'])) {
+				$account=$row->CAPTION;
+				if ($account==$line) { 
+					$show="TRUE"; 
+				}
 			}
 		}	}	}
-    }	return $show;
+    }	
+    return $show;
 }
 
 function emailExists($line) {
     $show="FALSE";
    	if ((isset($this->db)) && (isset($this->base))) {
+        $sql="DELETE FROM mauric_dataUsers WHERE (email='".$line."') AND (status=0)";
+		mysql_query($sql,$this->db);
 		$this->base->db=$this->db;
-        $this->base->sql="SELECT * FROM `".$this->prefix."_dataUsers` WHERE (`email`=\"$line\")";
+        $this->base->sql="SELECT * FROM mauric_dataUsers WHERE (email='".$line."') AND (status>0)";
     	$line_ms=$this->base->sqlSelect();
 		if (isset($line_ms)) {	if (isset($line_ms['res']))	{	if ($line_ms['res']) {
 			while($line_row=mysql_fetch_array($line_ms['res'])) {
@@ -242,4 +256,3 @@ function getNoticeStyle($action) {
 }
 
 } ?>
-

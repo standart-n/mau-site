@@ -78,6 +78,67 @@ text-decoration:underline;
 outline:none;
 }
 
+
+#users_private_oc{
+display:block;
+float:left;
+font-family:Verdana;
+font-size:12px;
+font-weight:normal;
+display:block;
+float:left;
+color:#222;
+margin:0 0 0 ;
+text-decoration:none;
+outline:none;
+}
+
+
+#users_private_oc_edit {
+display:block;
+}
+
+#users_private_oc_edit a:hover{
+color:ff0000;
+}
+
+#users_private_oc_edit a{
+display:block;
+float:left;
+font-family: Verdana;
+font-size:12px;
+font-weight:normal;
+display:block;
+float:left;
+color:#036;
+margin:0 0 0 20px;
+text-decoration:underline;
+outline:none;
+}
+
+#users_private_oc_save {
+display:none;
+}
+
+#users_private_oc_save a:hover{
+color:ff0000;
+}
+
+#users_private_oc_save a{
+display:block;
+float:left;
+font-family: Verdana;
+font-size:12px;
+font-weight:normal;
+display:block;
+float:left;
+color:#036;
+margin:0 0 0 20px;
+text-decoration:underline;
+outline:none;
+}
+
+
 .private_dlg_label {
 font-family: Verdana, Arial, Helvetica, sans-serif;
 font-size:small;

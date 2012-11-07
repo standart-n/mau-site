@@ -5,6 +5,7 @@ var $run="\r\n";
 var $runn="\r\n\r\n";
 
 function engine() {
+	//if ((isset($this->de['fdb'])) && (isset($this->de['it']))) { echo 'fb'; }
     $this->getCookies();
     $script=$this->de['fn_models']->loadScript('reg');
     $this->de['fn_markup']->insBeforeCloseTag($this->de['html'],$script,'js');
@@ -15,7 +16,7 @@ function engine() {
             setcookie("user_lastEmail",$email,time()+2628000);
             $password=strval(htmlspecialchars(trim(stripslashes(strtolower($_POST['users_password'])))));
             if ((isset($this->de['base'])) && (isset($this->de['db']))) {    
-            	$sql="SELECT * FROM `".$this->de['prefix']."_dataUsers` WHERE (`email`=\"$email\") AND (`status`>0)";
+            	$sql="SELECT * FROM `mauric_dataUsers` WHERE (`email`=\"$email\") AND (`status`>0)";
             	$res=mysql_query($sql,$this->de['db']);
                 if (isset($res)) {
                   if ($res) {
@@ -206,7 +207,7 @@ function addUser() {
     $show="FALSE";
     $this->password_code=md5(md5($this->password)."deCMS");
     if ((isset($this->de['base'])) && (isset($this->de['db']))) {    
-    	$sql="INSERT INTO `".$this->de['prefix']."_dataUsers` 
+    	$sql="INSERT INTO `mauric_dataUsers` 
                     (email,password,account,street,house,building,flat,status,post_dt,post_d,post_t)
                         values (\"$this->email\",\"$this->password_code\",\"$this->account\",
                                 \"$this->street\",\"$this->house\",\"$this->building\",\"$this->flat\",
@@ -227,7 +228,7 @@ function addUser() {
 function activationUserById($id) {
     $show="FALSE";
     if ((isset($this->de['base'])) && (isset($this->de['db']))) {    
-    	$sql="UPDATE `".$this->de['prefix']."_dataUsers` set `status`=1 WHERE (`id`=".$id.")";
+    	$sql="UPDATE `mauric_dataUsers` set `status`=1 WHERE (`id`=".$id.")";
     	$res=mysql_query($sql,$this->de['db']);
         if (isset($res)) {
             if ($res) {
@@ -295,7 +296,7 @@ $message="Здравствуйте!\n
 Чтобы активировать вашу учетную запись, перейдите по ссылке:
 http://www.mauric.ru/de.".$code.".".$this->user_id.".activation\n
 С уважением,\n администрация Муниципального автономного учреждения\n Расчетно-информационный центр, www.mauric.ru";
-mail($email,$subject,$message);
+mail($email,$subject,$message,"From:registration@mauric.ru");
 }
 
 } ?>
