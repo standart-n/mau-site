@@ -36,10 +36,24 @@ function private_editCounter(id) {
 
 $(function(){
 
-  $("#users_private_oc_edit").live("click",function(){
-    $("#users_private_oc").html('<input type="text" value="'+$(this).attr('mau-id')+'" width="100px">');
+  $("#users_private_oc_edit a").live("click",function(){
+    $("#users_private_oc").html('<input id="users_private_oc_new" type="text" value="'+$(this).attr("mauid")+'" width="100px">');
+    $("#users_private_oc_edit").hide();
+    $("#users_private_oc_save").show();
     //value=document.getElementById("private_dlg_value_"+id).innerHTML;
     //deAjax('external/ajax_private.php?type=checkCounter&action=info&id='+id+'&value='+value);
   });
 
+  $("#users_private_oc_save a").live("click",function(){
+  
+    var value=$("#users_private_oc_new").val();
+    
+    $("#users_private_oc_save").hide();
+    $("#users_private_oc_edit").show();
+
+    $("#users_private_oc").html(value);
+    deAjax('external/ajax_private.php?type=checkCounter&action=editoc&id='+0+'&value='+value);
+
+  });
+  
 });

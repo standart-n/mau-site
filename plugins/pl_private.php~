@@ -93,11 +93,13 @@ function getHistoryById(&$mdl,$id,$account) { $sql=""; $this->i=0;
                 	$this->res_2=ibase_query($this->de['it'],$sql_2);
                 	if (isset($this->res_2)) { if ($this->res_2) {
 						$this->row_2=ibase_fetch_object($this->res_2);
+						if (isset($this->row_2)) { if (isset($this->row_2->VAL)) {  
 						if (intval($this->row_2->VAL)>0) {
 						  $this->mdl_counter=$this->de['fn_models']->loadModel('users_history');
 						  $this->insUserData("id|serv|serial|value|postdt");
 						  $this->de['fn_markup']->insBeforeCloseTag($mdl,$this->mdl_counter,'users_private_history');
 						}
+						} }
 					}	}
                   }
                 }

@@ -103,8 +103,6 @@ color:ff0000;
 }
 
 #users_private_oc_edit a{
-display:block;
-float:left;
 font-family: Verdana;
 font-size:12px;
 font-weight:normal;
@@ -115,6 +113,39 @@ margin:0 0 0 20px;
 text-decoration:underline;
 outline:none;
 }
+
+#users_private_oc_new{
+font-family: Verdana;
+font-size:14px;
+font-weight:normal;
+display:block;
+float:left;
+color:#333;
+padding:0 0 0 10px;
+margin:0;
+}
+
+#users_private_oc_result{
+font-family: Verdana;
+font-size:14px;
+font-weight:normal;
+display:block;
+float:left;
+color:#010101;
+padding:10px 0 10px 0;
+margin:0;
+}
+
+
+#users_private_oc_result a{
+font-family: Verdana;
+font-size:14px;
+font-weight:normal;
+color:#036;
+text-decoration:underline;
+outline:none;
+}
+
 
 #users_private_oc_save {
 display:none;
