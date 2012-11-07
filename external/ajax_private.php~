@@ -7,7 +7,7 @@
 
 	$type=strval(trim($_GET['type']));
 	$action=strval(trim($_GET['action']));
-	$id=intval(trim($_GET['id']));
+	$id=trim($_GET['id']);
     if (isset($_GET['value'])) { $value=trim($_GET['value']); } else { $value=""; }
 
 	$base=new base;
@@ -16,10 +16,14 @@
 
 	$base->getBaseFromAdmin();
 	$db=				$base->db;
+	$fdb=				$base->fdb;
+	$it=				$base->it;
 	$prefix=			$base->prefix;
 
 	$fn_private->prefix=	$prefix;
 	$fn_private->db=		$db;
+	$fn_private->fdb=		$fdb;
+	$fn_private->it=		$it;
 	$fn_private->base=		$base;
     $fn_private->fn_ajax=   $fn_ajax;
 
