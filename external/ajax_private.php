@@ -8,7 +8,7 @@
 	$type=strval(trim($_GET['type']));
 	$action=strval(trim($_GET['action']));
 	$id=trim($_GET['id']);
-    if (isset($_GET['value'])) { $value=trim($_GET['value']); } else { $value=""; }
+    if (isset($_GET['value'])) { $value=intval(trim($_GET['value'])); } else { $value=""; }
 
 	$base=new base;
 	$fn_ajax=new fn_ajax;

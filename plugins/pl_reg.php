@@ -168,9 +168,15 @@ function getValue($type,$format,$space) {
             case 'str': $this->$type=$this->strCheck($this->$type); break;
             case 'int': $this->$type=$this->strCheck($this->$type); break;
         }
+        /*
         switch ($space) {
-            case 'none': $this->$type=ereg_replace(" +","",$this->$type); break;
-            case 'one': $this->$type=ereg_replace(" +"," ",$this->$type); break;
+            case 'none': $this->$type=preg_replace(" +","",$this->$type); break;
+            case 'one': $this->$type=[]_replace(" +"," ",$this->$type); break;
+        }
+        */
+        switch ($space) {
+            case 'none': $this->$type=trim($this->$type); break;
+            case 'one': $this->$type=trim($this->$type); break;
         }
         $this->getValid($type);
 }

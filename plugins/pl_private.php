@@ -29,6 +29,8 @@ function engine() {
                 $this->getHistoryById($this->mdl_pr,$user_id,$this->account);
                 $this->de['fn_markup']->insPlaceKeyTag($this->de['html'],$this->mdl_pr,'users_private');
             }
+       } else {
+	     header('Location:http://www.izhmfc.ru/de.reg');  
        }
     }
     return $this->de;
@@ -47,7 +49,7 @@ function getCountersById(&$mdl,$id,$account) { $sql=""; $this->i=0;
 			$sql.="SELECT de.d\$uuid as ID, de.vid as SERV, de.caption as SERIAL ";
 			$sql.="FROM accounts ac ";
 			$sql.="LEFT JOIN device de on ac.d\$uuid=de.account_d\$uuid ";
-			$sql.="WHERE ac.caption='".$account."' ";
+			$sql.="WHERE ac.caption='".$account."' and de.status=0 ";
         	$this->res=ibase_query($this->de['it'],$sql);
             if (isset($this->res)) {
                 if ($this->res) {
@@ -57,7 +59,7 @@ function getCountersById(&$mdl,$id,$account) { $sql=""; $this->i=0;
 					$sql_2.="ad.val as VAL, ";
 					$sql_2.="ad.insertdt as POSTDT ";
 					$sql_2.="FROM account_data ad ";
-					$sql_2.="WHERE ad.device_d\$uuid='".$this->row->ID."' ";
+					$sql_2.="WHERE ad.device_d\$uuid='".$this->row->ID."' and ad.status=0 ";
 					$sql_2.="ORDER by ad.insertdt DESC ";
 					$this->sql_2=$sql_2;
                 	$this->res_2=ibase_query($this->de['it'],$sql_2);

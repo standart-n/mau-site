@@ -1,0 +1,40 @@
+.users_lost_notactiv_box {
+display:block;
+float:left;
+clear:both;
+width:500px;
+height:auto;
+margin:5px 0 0 0;
+padding:0 0 0 0;
+clear:both;
+}
+
+
+.users_lost_notactiv_caption {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:medium;
+font-weight:normal;
+display:block;
+float:left;
+width:500px;
+height:auto;
+clear:both;
+color:#990000;
+margin:0 0 0 0;
+padding:0 0 10px 0;
+}
+
+.users_lost_notactiv_comment {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:small;
+font-weight:normal;
+display:block;
+float:left;
+width:500px;
+height:auto;
+clear:both;
+color:#000000;
+margin:0 0 0 0;
+padding:0 0 0 0;
+}
+

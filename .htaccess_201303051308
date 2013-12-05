@@ -1,0 +1,46 @@
+AddDefaultCharset windows-1251
+#AddDefaultCharset UTF-8
+php_flag display_errors on
+php_value upload_max_filesize 50M
+php_value post_max_size 50M
+php_value memory_limit 32M
+
+RewriteEngine on
+Options FollowSymLinks
+RewriteCond %{HTTP_HOST} ^mauric.ru$
+
+RewriteRule mauric(.*)$ http://www.izhmfc.ru/$1 [NC,R=301,L]
+# RewriteRule izhmfc(.*)$ http://www.izhmfc.ru/$1 [NC,R=301,L]
+# RewriteRule ^(.*)$ http://www.izhmfc.ru/$1 [NC,R=301,L]
+RewriteRule plugins/show_table.php _maps/ [QSA]
+
+RewriteRule ^table$ /_table/ [QSA]
+RewriteRule ^test$ /_test/ [QSA]
+RewriteRule ^upload$ /_upload/ [QSA]
+RewriteRule ^maps$ /_maps/ [QSA]
+RewriteRule ^buildings$ /_buildings/ [QSA]
+RewriteRule ^reports$ /_reports/ [QSA]
+RewriteRule ^export$ /_export/ [QSA]
+RewriteRule ^site-dev$ /_site-dev/ [QSA]
+
+#RewriteRule act:(.*)/id:(.*)/service:(.*)/sector:(.*)/street:(.*)/home:(.*) /_table/index.php?action=$1&click_id=$2&filter_service=$3&filter_sector=$4&filter_street=$5&filter_home=$6 [QSA]
+#RewriteRule table/act:([a-zA-Z0-9]*)/id:([a-zA-Z0-9]*)/service:([a-zA-Z0-9]*)/sector:([a-zA-Z0-9]*)/street:([a-zA-Z0-9]*)/home:([a-zA-Z0-9]*) /_table/index.php?action=$1&click_id=$2&filter_service=$3&filter_sector=$4&filter_street=$5&filter_home=$6 [QSA]
+
+
+RewriteRule ^_site-dev/de\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)$ _site-dev/index.php?level1=$1&level2=$2&level3=$3&level4=$4&level5=$5 [QSA]
+RewriteRule ^_site-dev/de\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)$ _site-dev/index.php?level1=$1&level2=$2&level3=$3&level4=$4 [QSA]
+RewriteRule ^_site-dev/de\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)$ _site-dev/index.php?level1=$1&level2=$2&level3=$3 [QSA]
+RewriteRule ^_site-dev/de\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)$ _site-dev/index.php?level1=$1&level2=$2 [QSA]
+RewriteRule ^_site-dev/de\.([a-zA-Z0-9_-]+)$ _site-dev/index.php?level1=$1 [QSA]
+
+
+RewriteRule ^de\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)$ index.php?level1=$1&level2=$2&level3=$3&level4=$4&level5=$5 [QSA]
+RewriteRule ^de\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)$ index.php?level1=$1&level2=$2&level3=$3&level4=$4 [QSA]
+RewriteRule ^de\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)$ index.php?level1=$1&level2=$2&level3=$3 [QSA]
+RewriteRule ^de\.([a-zA-Z0-9_-]+)\.([a-zA-Z0-9_-]+)$ index.php?level1=$1&level2=$2 [QSA]
+RewriteRule ^de\.([a-zA-Z0-9_-]+)$ index.php?level1=$1 [QSA]
+
+
+
+RewriteRule ^de\.main$ /_lite/ [QSA]
+RewriteRule ^$ /_lite/ [QSA]
