@@ -301,13 +301,13 @@ $code=md5(md5(date("j").$this->user_id.$this->email."deCMS"));
 $email=$this->email;
 $subject="Подтверждение регистрации";
 $message="Здравствуйте!\n 
-Спасибо за регистрацию на сайте Информационно-расчетного центра, www.mauric.ru\n
+Спасибо за регистрацию на сайте Информационно-расчетного центра, www.izhmfc.ru\n
 Ваш лицевой счет: ".$this->account."
 Ваш пароль: ".$this->password."\n
 Чтобы активировать вашу учетную запись, перейдите по ссылке:
-http://www.mauric.ru/de.".$code.".".$this->user_id.".activation\n
-С уважением,\n администрация Муниципального автономного учреждения\n Расчетно-информационный центр, www.mauric.ru";
-mail($email,$subject,$message,"From:registration@mauric.ru");
+http://www.izhmfc.ru/de.".$code.".".$this->user_id.".activation\n
+С уважением,\n администрация Муниципального автономного учреждения\n Расчетно-информационный центр, www.izhmfc.ru";
+mail($email,$subject,$message,"From:registration@izhmfc.ru");
 }
 
 } ?>

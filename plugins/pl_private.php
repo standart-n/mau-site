@@ -89,7 +89,7 @@ function getHistoryById(&$mdl,$id,$account) { $sql=""; $this->i=0;
 					$sql_2.="ad.val as VAL, ";
 					$sql_2.="ad.insertdt as POSTDT ";
 					$sql_2.="FROM account_data ad ";
-					$sql_2.="WHERE ad.device_d\$uuid='".$this->row->ID."' ";
+					$sql_2.="WHERE ad.status=0 and ad.device_d\$uuid='".$this->row->ID."' ";
 					$sql_2.="ORDER by ad.insertdt DESC ";
 					$this->sql_2=$sql_2;
                 	$this->res_2=ibase_query($this->de['it'],$sql_2);

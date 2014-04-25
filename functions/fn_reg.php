@@ -77,13 +77,14 @@ function check_street($line){
     $ms=array();
     $ms['check']="FALSE";
     $ms['field']="улица";
-    if ($line!="") {
+    //if ($line!="") {
       if (strlen($line)>1) {
         if (strlen($line)<50) {
                 $ms['check']="TRUE";
         } else { $ms['error']="слишком длинное значение"; }
      } else { $ms['error']="слишком короткое значение"; }
-    } else { $ms['error']="значение не указано"; }
+    //} else { $ms['error']="значение не указано"; }
+    $ms['check']="TRUE";
     return $ms;
 }
 
@@ -98,6 +99,7 @@ function check_house($line){
         } else { $ms['error']="слишком длинное значение"; }
       } else { $ms['error']="слишком короткое значение"; }
     } else { $ms['error']="значение не указано"; }
+    $ms['check']="TRUE";
     return $ms;
 }
 
@@ -108,6 +110,7 @@ function check_building($line){
     if (strlen($line)<50) {
         $ms['check']="TRUE";
     } else { $ms['error']="слишком длинное значение"; }
+    $ms['check']="TRUE";
     return $ms;
 }
 
@@ -122,6 +125,7 @@ function check_flat($line){
         } else { $ms['error']="слишком длинное значение"; }
       } else { $ms['error']="слишком короткое значение"; }
     } else { $ms['error']="значение не указано"; }
+    $ms['check']="TRUE";
     return $ms;
 }
 
